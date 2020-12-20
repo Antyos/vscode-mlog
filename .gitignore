@@ -1,3 +1,10 @@
+# Workspace settings
+.vscode/*
+!.vscode/launch-template.json
+
+# Generated code
+out/
+
 # Logs
 logs
 *.log
