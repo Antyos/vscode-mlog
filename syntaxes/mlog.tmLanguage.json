@@ -1,0 +1,43 @@
+{
+  "name": "Mindustry Logic",
+  "fileTypes": [
+    "mlog"
+  ],
+  "scopeName": "source.mlog",
+  "uuid": "235046A8-4282-11EB-B378-0242AC130002",
+  "keyEquivalent": "^~S",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#string"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "name": "comment.line.number-sign.mlog",
+      "match": "(#+).*$",
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.comment.mlog"
+        }
+      }
+    },
+    "string": {
+      "name": "string.quoted.double.mlog",
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.mlog"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.mlog"
+        }
+      }
+    }
+  }
+}
