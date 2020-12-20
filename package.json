@@ -63,6 +63,5 @@
         "typescript": "^3.5.1",
         "vsce": "^1.75.0"
     },
-    "dependencies": {
-    }
+    "dependencies": {}
 }
