@@ -4,15 +4,111 @@ scopeName: source.mlog
 uuid: 235046A8-4282-11EB-B378-0242AC130002
 keyEquivalent: ^~S
 patterns:
+  - include: '#commands'
+  - include: '#global_constants'
+  - include: '#jump_conditions'
+  - include: '#operations'
   - include: '#comments'
+  - include: '#numbers'
   - include: '#string'
 
 repository:
+    commands:
+        patterns:
+          - name: support.function.mlog
+            match: \b(read|write|draw|print|drawflush|printflush|getlink|control|radar|sensor|ubind|ucontrol|uradar|ulocate)\b
+          - name: keyword.control.end.mlog
+            match: \bend\b
+          - name: keyword.control.jump.mlog
+            match: \bjump\b
+          - name: keyword.control.set.mlog
+            match: \bset\b
+          - name: keyword.control.op.mlog
+            match: \bop\b
+
     comments:
         name: comment.line.number-sign.mlog
         match: (#+).*$
         captures:
             '1': {name: punctuation.definition.comment.mlog}
+
+    global_constants:
+        patterns:
+            # Needs single quote otherwise js-yaml fails when first char is '@'
+          - name: variable.language.builtin.mlog
+            match: '@(?:counter|links|time|unit|ipt|this|thisx|thisy)\b'
+          - name: variable.language.units.mlog
+            match: |-
+                (?x)
+                @(?:alpha|beta|gamma|
+                    dagger|mace|crawler|atrax|spiroct|arkyid|toxopid|
+                    flare|horizon|zenith|antumbra|eclipse|fortress|
+                    mono|poly|mega|quad|oct|risso|
+                    minke|bryde|sei|omura|scepter|reign|
+                    nova|pulsar|quasar|vela|corvus)
+                \b
+          - name: variable.language.item.mlog
+            match: '@(?:scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass)\b'
+          - name: variable.language.liquid.mlog
+            match: '@(?:water|slag|oil|cryofluid)'
+          - name: variable.language.block.mlog
+          - name: variable.language.special.mlog
+            match: '@(?:solid|air)'
+          - name: variable.language.sensor.mlog
+            match: |-
+                (?x)
+                @(?:totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|
+                    powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|
+                    maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|
+                    team|type|flag|controlled|commanded|name|config|payloadCount|payloadType)
+                \b
+          - name: constant.language.boolean.true.mlog
+            match: '\btrue\b'
+          - name: constant.language.boolean.false.mlog
+            match: '\bfalse\b'
+          - name: constant.language.null.mlog
+            match: '\bnull\b'
+          - name: constant.language.the-end.mlog
+            match: '\bthe end\b'
+            comment: I'm not really sure why this is here, but it's in 'https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/GlobalConstants.java'
+
+    jump_conditions:
+        name: constant.language.jump-condition.mlog
+        match: \b(?:equal|notEqual|lessThan|lessThanEq|greaterThan|greaterThanEq|always)\b
+
+    numbers:
+        patterns:
+            # Minus sign
+          - name: keyword.operator.arithmetic.mlog
+            match: '-'
+
+            # Numbers (incorporated from PythonImproved grammar)
+          - name: constant.numeric.integer.hexadecimal.python
+            match: \b(?i:(0x\h+))
+
+          - name: constant.numeric.integer.binary.python
+            match: \b(?i:(0b[01]+))
+            
+          - comment: Ummm... why do we have three of these? This is one...
+            name: constant.numeric.float.mlog
+            match: \b(?i:(\d+\.\d*(e[\-\+]?\d+)?))(?=[^[:alpha:]_])
+
+          - comment: This is two...
+            name: constant.numeric.float.mlog
+            match: (?<=[^[:alnum:]_])(?i:(\.\d+(e[\-\+]?\d+)?))
+
+          - comment: And this is three...
+            name: constant.numeric.float.mlog
+            match: \b(?i:(\d+e[\-\+]?\d+))
+
+          - name: constant.numeric.integer.decimal.mlog
+            match: \b([1-9]+[0-9]*|0)
+    
+    operations:
+        name: constant.language.operation.mlog
+        match: \b(?:add|sub|mul|div|idiv|mod|pow|shl|shr|or|and|xor|not|max|min|atan2|dst|noise|abs|log|log10|sin|cos|tan|floor|ceil|sqrt|rand)\b
+        comment: Does not include comparisons covered by #jump_conditions
+
     string:
         name: string.quoted.double.mlog
         begin: '"'
