@@ -1,0 +1,15 @@
+# This is a comment
+read result cell1 0
+print "This is a sample"
+printflush message1
+getlink result 0
+control enabled block1 0 0 0 0
+sensor result block1 @copper
+set result 0
+op add result result 4
+jump 12 notEqual result 0
+end
+ubind @poly
+ucontrol move 0 0 0 0 0
+uradar enemy any any distance turret1 1 result
+ulocate building core true @copper outx outy found core
