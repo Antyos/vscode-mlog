@@ -1,6 +1,8 @@
 # Mindustry Logic for VS Code
 
-Mindustry Logic (`mlog`) language support for Visual Studio Code
+Mindustry Logic (`mlog`) language support for Visual Studio Code.
+
+I really like Mindustry and the introduction of `mlog` in v6.0 was a great addition. Unfortunately, I really don't like the in-game editor, so I made this extension to hopefully make the coding process easier.
 
 ## Features
 
@@ -16,15 +18,13 @@ _Theme: [One Monokai Theme](https://marketplace.visualstudio.com/items?itemName=
 
 - Create a language/compiler to convert more traditional style code into `mlog`
 
-    _No promises on when this is coming
+    _No promises on when this is coming_
 
 ## Changelog
 
 See the changelog [here](https://github.com/Antyos/vscode-mlog/blob/master/CHANGELOG.md).
 
 ## Contributing
-
-I made this extension because I like OpenSCAD and there wasn't any language support in VS Code I liked. I will try and keep this extension up to date in the future, but I make no promises.
 
 If you would like to contribute, here's what you can do:
 
