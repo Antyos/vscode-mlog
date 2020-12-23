@@ -1,0 +1,25 @@
+# vscode files
+.vscode/**
+
+# gitignore
+.gitignore
+
+# Node modules
+node_modules
+
+# Typescript code
+out/*.js.map
+src/**
+
+# Typescript config
+tsconfig.json
+tslint.json
+
+# YAML grammar (only json is needed)
+syntaxes/mlog.yaml-tmLanguage
+
+# Test files
+test/**
+
+# Secret files
+**/secret/
