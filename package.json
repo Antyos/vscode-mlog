@@ -4,7 +4,7 @@
     "description": "Mindustry Logic (mlog) highlighting for VSCode!",
     "version": "0.0.1",
     "publisher": "Antyos",
-    "icon": "icons/logo.png",
+    "icon": "images/logo.png",
     "license": "SEE LICENSE IN LICENSE",
     "engines": {
         "vscode": "^1.44.0"
