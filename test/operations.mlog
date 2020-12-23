@@ -1,0 +1,35 @@
+op add result a b
+op sub result a b
+op mul result a b
+op div result a b
+op idiv result a b
+op mod result a b
+op pow result a b
+op equal result a b
+op notEqual result a b
+op land result a b
+op lessThan result a b
+op lessThanEq result a b
+op greaterThan result a b
+op greaterThanEq result a b
+op shl result a b   # (>>)
+op shr result a b   # (<<)
+op or result a b
+op and result a b
+op xor result a b
+op not result a 0 # Single arg (flip)
+op max result a b
+op min result a b
+op atan2 result a b
+op dst result a b
+op noise result a b
+op abs result a 0   # Single arg
+op log result a 0   # Single arg
+op log10 result a 0 # Single arg
+op sin result a 0   # Single arg
+op cos result a 0   # Single arg
+op tan result a 0   # Single arg
+op floor result a 0 # Single arg
+op ceil result a 0  # Single arg
+op sqrt result a 0  # Single arg
+op rand result a 0  # Single arg
