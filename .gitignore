@@ -5,6 +5,9 @@
 # Generated code
 out/
 
+# Ignore all "secret" folders
+**/secret/
+
 # Logs
 logs
 *.log
