@@ -49,10 +49,6 @@
         ]
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "lint": "tslint -p ./",
-        "watch": "tsc -watch -p ./",
         "update-grammar": "js-yaml syntaxes/mlog.yaml-tmLanguage > syntaxes/mlog.tmLanguage.json"
     },
     "devDependencies": {
