@@ -67,7 +67,7 @@
       "patterns": [
         {
           "name": "variable.language.builtin.mlog",
-          "match": "@(?:counter|links|time|unit|ipt|this|thisx|thisy)\\b"
+          "match": "@(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter)\\b"
         },
         {
           "name": "variable.language.units.mlog",

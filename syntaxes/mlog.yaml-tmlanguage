@@ -36,7 +36,7 @@ repository:
         patterns:
             # Needs single quote otherwise js-yaml fails when first char is '@'
           - name: variable.language.builtin.mlog
-            match: '@(?:counter|links|time|unit|ipt|this|thisx|thisy)\b'
+            match: '@(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter)\b'
           - name: variable.language.units.mlog
             match: |-
                 (?x)
