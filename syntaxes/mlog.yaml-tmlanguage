@@ -25,6 +25,8 @@ repository:
             match: \bset\b
           - name: keyword.control.op.mlog
             match: \bop\b
+          - name: keyword.control.noop.mlog
+            match: \bnoop\b
 
     comments:
         name: comment.line.number-sign.mlog
