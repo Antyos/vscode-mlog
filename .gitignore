@@ -8,6 +8,9 @@ out/
 # Ignore all "secret" folders
 **/secret/
 
+# Ignore .vsix extension files (will be in releases, not commits)
+*.vsix
+
 # Logs
 logs
 *.log
