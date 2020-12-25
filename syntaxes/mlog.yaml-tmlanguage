@@ -138,7 +138,7 @@ repository:
     
     operations:
         name: constant.language.operation.mlog
-        match: \b(?:add|sub|mul|div|idiv|mod|pow|shl|shr|or|and|xor|not|max|min|atan2|dst|noise|abs|log|log10|sin|cos|tan|floor|ceil|sqrt|rand)\b
+        match: \b(?:add|sub|mul|div|idiv|mod|pow|equal|notEqual|land|lessThan|lessThanEq|greaterThan|greaterThanEq|shl|shr|or|and|xor|not|max|min|atan2|dst|noise|abs|log|log10|sin|cos|tan|floor|ceil|sqrt|rand)\b
         comment: Does not include comparisons covered by #jump_conditions
 
     string:
