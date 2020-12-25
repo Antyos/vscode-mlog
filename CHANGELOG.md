@@ -9,6 +9,7 @@
 
 ### Fixed
 
+- Highlighting global constants for blocks now (correctly) use dash-case instead of camelCase. I.e. `@copper-wall-large` instead of `@copperWallLarge`
 - Fixed distinction between logical **AND** operator and bitwise **AND**. Logical **AND** (`land`) is now highlighted
     |                 | In game|  mlog |
     |-----------------|--------|-------|
