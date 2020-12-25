@@ -22,7 +22,7 @@ _Theme: [One Monokai Theme](https://marketplace.visualstudio.com/items?itemName=
 
 ## Changelog
 
-See the changelog [here](https://github.com/Antyos/vscode-mlog/blob/master/CHANGELOG.md).
+See the changelog [here](https://github.com/Antyos/vscode-mlog/blob/main/CHANGELOG.md).
 
 ## Contributing
 
