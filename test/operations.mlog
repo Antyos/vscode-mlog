@@ -7,17 +7,17 @@ op mod result a b
 op pow result a b
 op equal result a b
 op notEqual result a b
-op land result a b
+op land result a b  # Logical and
 op lessThan result a b
 op lessThanEq result a b
 op greaterThan result a b
 op greaterThanEq result a b
 op shl result a b   # (>>)
 op shr result a b   # (<<)
-op or result a b
-op and result a b
-op xor result a b
-op not result a 0 # Single arg (flip)
+op or result a b  # Bitwise OR
+op and result a b # Bitwise AND
+op xor result a b # bitwise XOR
+op not result a 0 # Single arg; Bitwise NOT
 op max result a b
 op min result a b
 op atan2 result a b
