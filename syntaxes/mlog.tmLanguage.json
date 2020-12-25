@@ -51,6 +51,10 @@
         {
           "name": "keyword.control.op.mlog",
           "match": "\\bop\\b"
+        },
+        {
+          "name": "keyword.control.noop.mlog",
+          "match": "\\bnoop\\b"
         }
       ]
     },
@@ -67,11 +71,16 @@
       "patterns": [
         {
           "name": "variable.language.builtin.mlog",
-          "match": "@(?:counter|links|time|unit|ipt|this|thisx|thisy)\\b"
+          "match": "@(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter)\\b"
         },
         {
           "name": "variable.language.units.mlog",
           "match": "(?x)\n@(?:alpha|beta|gamma|\n    dagger|mace|crawler|atrax|spiroct|arkyid|toxopid|\n    flare|horizon|zenith|antumbra|eclipse|fortress|\n    mono|poly|mega|quad|oct|risso|\n    minke|bryde|sei|omura|scepter|reign|\n    nova|pulsar|quasar|vela|corvus)\n\\b"
+        },
+        {
+          "name": "variable.language.block.mlog",
+          "match": "(?x)\n@(?:graphite-press|multi-press|silicon-smelter|silicon-crucible|kiln|plastanium-compressor|phase-weaver|alloy-smelter|cryofluid-mixer|\n    pyratite-mixer|blast-mixer|melter|separator|disassembler|spore-press|pulverizer|coal-centrifuge|incinerator|\n    copper-wall(?:-large)?|titanium-wall(?:-large)?|plastanium-wall(?:-large)?|thorium-wall(?:-large)?|\n    phase-wall(?:-large)?|surge-wall(?:-large)?|door(?:-large)?|scrap-wall(?:-(?:large|huge|gigantic))?|thruster|\n    mender|mend-projector|overdrive-projector|overdrive-dome|force-projector|shock-mine|\n    conveyor|titanium-conveyor|plastanium-conveyor|armored-conveyor|junction|bridge-conveyor|phase-conveyor|sorter|inverted-sorter|router|distributor|\n    overflow-gate|underflow-gate|mass-driver|payload-conveyor|payload-router|\n    mechanical-pump|rotary-pump|thermal-pump|conduit|pulse-conduit|plated-conduit|liquid-router|liquid-tank|liquid-junction|bridge-conduit|phase-conduit|\n    power-node|power-node-large|surge-tower|diode|battery|battery-large|combustion-generator|thermal-generator|steam-generator|differential-generator|rtg-generator|solar-panel|solar-panel-large|thorium-reactor|impact-reactor|\n    mechanical-drill|pneumatic-drill|laser-drill|blast-drill|water-extractor|cultivator|oil-extractor|\n    core-shard|core-foundation|core-nucleus|vault|container|unloader|\n    duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown|\n    command-center|ground-factory|air-factory|naval-factory|additive-reconstructor|multiplicative-reconstructor|exponential-reconstructor|tetrative-reconstructor|repair-point|resupply-point|\n    power-source|power-void|item-source|item-void|liquid-source|liquid-void|\n    illuminator|launch-pad(?:-large)?|interplanetary-accelerator|message|switch|micro-processor|logic-processor|hyper-processor|memory-cell|memory-bank|logic-display|large-logic-display)\n\\b",
+          "comment": "That is a lot... wow... I guess these are technically addressable, albeit never recognized that they can be\nList of all items that are defined in quotes except legacy and experimental items\nFrom: 'https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/content/Blocks.java'\nItems in the 'item' and 'item-large' are combined in a single check so 'item' doesn not match 'item-large' by mistake\n# If you're reading this, that means you're pretty cool!"
         },
         {
           "name": "variable.language.item.mlog",
@@ -80,11 +89,6 @@
         {
           "name": "variable.language.liquid.mlog",
           "match": "@(?:water|slag|oil|cryofluid)"
-        },
-        {
-          "name": "variable.language.block.mlog",
-          "match": "(?x)\n@(?:oreCopper|oreLead|oreScrap|oreCoal|oreTitanium|oreThorium|\n    siliconSmelter|siliconCrucible|kiln|graphitePress|plastaniumCompressor|multiPress|phaseWeaver|surgeSmelter|pyratiteMixer|blastMixer|cryofluidMixer|\n    melter|separator|disassembler|sporePress|pulverizer|incinerator|coalCentrifuge|\n    powerSource|powerVoid|itemSource|itemVoid|liquidSource|liquidVoid|illuminator|\n    copperWall|copperWallLarge|titaniumWall|titaniumWallLarge|plastaniumWall|plastaniumWallLarge|thoriumWall|thoriumWallLarge|door|doorLarge|\n    phaseWall|phaseWallLarge|surgeWall|surgeWallLarge|mender|mendProjector|overdriveProjector|overdriveDome|forceProjector|shockMine|\n    scrapWall|scrapWallLarge|scrapWallHuge|scrapWallGigantic|thruster|\n    conveyor|titaniumConveyor|plastaniumConveyor|armoredConveyor|distributor|junction|itemBridge|phaseConveyor|sorter|invertedSorter|router|\n    overflowGate|underflowGate|massDriver|payloadConveyor|payloadRouter|\n    mechanicalPump|rotaryPump|thermalPump|conduit|pulseConduit|platedConduit|liquidRouter|liquidTank|liquidJunction|bridgeConduit|phaseConduit|\n    combustionGenerator|thermalGenerator|steamGenerator|differentialGenerator|rtgGenerator|solarPanel|largeSolarPanel|thoriumReactor|\n    impactReactor|battery|batteryLarge|powerNode|powerNodeLarge|surgeTower|diode|\n    mechanicalDrill|pneumaticDrill|laserDrill|blastDrill|waterExtractor|oilExtractor|cultivator|\n    coreShard|coreFoundation|coreNucleus|vault|container|unloader|\n    duo|scatter|scorch|hail|arc|wave|lancer|swarmer|salvo|fuse|ripple|cyclone|foreshadow|spectre|meltdown|segment|parallax|tsunami|\n    commandCenter|\n    groundFactory|airFactory|navalFactory|\n    additiveReconstructor|multiplicativeReconstructor|exponentialReconstructor|tetrativeReconstructor|\n    repairPoint|resupplyPoint|\n    message|switchBlock|microProcessor|logicProcessor|hyperProcessor|largeLogicDisplay|logicDisplay|memoryCell|memoryBank|\n    launchPad|launchPadLarge|interplanetaryAccelerator)\n\\b",
-          "comment": "That is a lot... wow... I guess these are technically addressable, albeit never recognized that they can be"
         },
         {
           "name": "variable.language.special.mlog",
@@ -154,7 +158,7 @@
     },
     "operations": {
       "name": "constant.language.operation.mlog",
-      "match": "\\b(?:add|sub|mul|div|idiv|mod|pow|shl|shr|or|and|xor|not|max|min|atan2|dst|noise|abs|log|log10|sin|cos|tan|floor|ceil|sqrt|rand)\\b",
+      "match": "\\b(?:add|sub|mul|div|idiv|mod|pow|equal|notEqual|land|lessThan|lessThanEq|greaterThan|greaterThanEq|shl|shr|or|and|xor|not|max|min|atan2|dst|noise|abs|log|log10|sin|cos|tan|floor|ceil|sqrt|rand)\\b",
       "comment": "Does not include comparisons covered by"
     },
     "string": {

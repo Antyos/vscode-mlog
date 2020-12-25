@@ -25,6 +25,8 @@ repository:
             match: \bset\b
           - name: keyword.control.op.mlog
             match: \bop\b
+          - name: keyword.control.noop.mlog
+            match: \bnoop\b
 
     comments:
         name: comment.line.number-sign.mlog
@@ -36,7 +38,7 @@ repository:
         patterns:
             # Needs single quote otherwise js-yaml fails when first char is '@'
           - name: variable.language.builtin.mlog
-            match: '@(?:counter|links|time|unit|ipt|this|thisx|thisy)\b'
+            match: '@(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter)\b'
           - name: variable.language.units.mlog
             match: |-
                 (?x)
@@ -47,38 +49,35 @@ repository:
                     minke|bryde|sei|omura|scepter|reign|
                     nova|pulsar|quasar|vela|corvus)
                 \b
+          - name: variable.language.block.mlog
+            match: |-
+                (?x)
+                @(?:graphite-press|multi-press|silicon-smelter|silicon-crucible|kiln|plastanium-compressor|phase-weaver|alloy-smelter|cryofluid-mixer|
+                    pyratite-mixer|blast-mixer|melter|separator|disassembler|spore-press|pulverizer|coal-centrifuge|incinerator|
+                    copper-wall(?:-large)?|titanium-wall(?:-large)?|plastanium-wall(?:-large)?|thorium-wall(?:-large)?|
+                    phase-wall(?:-large)?|surge-wall(?:-large)?|door(?:-large)?|scrap-wall(?:-(?:large|huge|gigantic))?|thruster|
+                    mender|mend-projector|overdrive-projector|overdrive-dome|force-projector|shock-mine|
+                    conveyor|titanium-conveyor|plastanium-conveyor|armored-conveyor|junction|bridge-conveyor|phase-conveyor|sorter|inverted-sorter|router|distributor|
+                    overflow-gate|underflow-gate|mass-driver|payload-conveyor|payload-router|
+                    mechanical-pump|rotary-pump|thermal-pump|conduit|pulse-conduit|plated-conduit|liquid-router|liquid-tank|liquid-junction|bridge-conduit|phase-conduit|
+                    power-node|power-node-large|surge-tower|diode|battery|battery-large|combustion-generator|thermal-generator|steam-generator|differential-generator|rtg-generator|solar-panel|solar-panel-large|thorium-reactor|impact-reactor|
+                    mechanical-drill|pneumatic-drill|laser-drill|blast-drill|water-extractor|cultivator|oil-extractor|
+                    core-shard|core-foundation|core-nucleus|vault|container|unloader|
+                    duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown|
+                    command-center|ground-factory|air-factory|naval-factory|additive-reconstructor|multiplicative-reconstructor|exponential-reconstructor|tetrative-reconstructor|repair-point|resupply-point|
+                    power-source|power-void|item-source|item-void|liquid-source|liquid-void|
+                    illuminator|launch-pad(?:-large)?|interplanetary-accelerator|message|switch|micro-processor|logic-processor|hyper-processor|memory-cell|memory-bank|logic-display|large-logic-display)
+                \b
+            comment: |-
+              That is a lot... wow... I guess these are technically addressable, albeit never recognized that they can be
+              List of all items that are defined in quotes except legacy and experimental items
+              From: 'https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/content/Blocks.java'
+              Items in the 'item' and 'item-large' are combined in a single check so 'item' doesn not match 'item-large' by mistake
+              # If you're reading this, that means you're pretty cool!
           - name: variable.language.item.mlog
             match: '@(?:scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass)\b'
           - name: variable.language.liquid.mlog
             match: '@(?:water|slag|oil|cryofluid)'
-          - name: variable.language.block.mlog
-            match: |-
-                (?x)
-                @(?:oreCopper|oreLead|oreScrap|oreCoal|oreTitanium|oreThorium|
-                    siliconSmelter|siliconCrucible|kiln|graphitePress|plastaniumCompressor|multiPress|phaseWeaver|surgeSmelter|pyratiteMixer|blastMixer|cryofluidMixer|
-                    melter|separator|disassembler|sporePress|pulverizer|incinerator|coalCentrifuge|
-                    powerSource|powerVoid|itemSource|itemVoid|liquidSource|liquidVoid|illuminator|
-                    copperWall|copperWallLarge|titaniumWall|titaniumWallLarge|plastaniumWall|plastaniumWallLarge|thoriumWall|thoriumWallLarge|door|doorLarge|
-                    phaseWall|phaseWallLarge|surgeWall|surgeWallLarge|mender|mendProjector|overdriveProjector|overdriveDome|forceProjector|shockMine|
-                    scrapWall|scrapWallLarge|scrapWallHuge|scrapWallGigantic|thruster|
-                    conveyor|titaniumConveyor|plastaniumConveyor|armoredConveyor|distributor|junction|itemBridge|phaseConveyor|sorter|invertedSorter|router|
-                    overflowGate|underflowGate|massDriver|payloadConveyor|payloadRouter|
-                    mechanicalPump|rotaryPump|thermalPump|conduit|pulseConduit|platedConduit|liquidRouter|liquidTank|liquidJunction|bridgeConduit|phaseConduit|
-                    combustionGenerator|thermalGenerator|steamGenerator|differentialGenerator|rtgGenerator|solarPanel|largeSolarPanel|thoriumReactor|
-                    impactReactor|battery|batteryLarge|powerNode|powerNodeLarge|surgeTower|diode|
-                    mechanicalDrill|pneumaticDrill|laserDrill|blastDrill|waterExtractor|oilExtractor|cultivator|
-                    coreShard|coreFoundation|coreNucleus|vault|container|unloader|
-                    duo|scatter|scorch|hail|arc|wave|lancer|swarmer|salvo|fuse|ripple|cyclone|foreshadow|spectre|meltdown|segment|parallax|tsunami|
-                    commandCenter|
-                    groundFactory|airFactory|navalFactory|
-                    additiveReconstructor|multiplicativeReconstructor|exponentialReconstructor|tetrativeReconstructor|
-                    repairPoint|resupplyPoint|
-                    message|switchBlock|microProcessor|logicProcessor|hyperProcessor|largeLogicDisplay|logicDisplay|memoryCell|memoryBank|
-                    launchPad|launchPadLarge|interplanetaryAccelerator)
-                \b
-            comment: That is a lot... wow... I guess these are technically addressable, albeit never recognized that they can be
-            # From: 'https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/content/Blocks.java'
-            # If you're reading this, that means you're pretty cool!
 
           - name: variable.language.special.mlog
             match: '@(?:solid|air)'
@@ -136,7 +135,7 @@ repository:
     
     operations:
         name: constant.language.operation.mlog
-        match: \b(?:add|sub|mul|div|idiv|mod|pow|shl|shr|or|and|xor|not|max|min|atan2|dst|noise|abs|log|log10|sin|cos|tan|floor|ceil|sqrt|rand)\b
+        match: \b(?:add|sub|mul|div|idiv|mod|pow|equal|notEqual|land|lessThan|lessThanEq|greaterThan|greaterThanEq|shl|shr|or|and|xor|not|max|min|atan2|dst|noise|abs|log|log10|sin|cos|tan|floor|ceil|sqrt|rand)\b
         comment: Does not include comparisons covered by #jump_conditions
 
     string:
