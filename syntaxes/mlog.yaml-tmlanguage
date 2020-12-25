@@ -54,8 +54,8 @@ repository:
                 (?x)
                 @(?:graphite-press|multi-press|silicon-smelter|silicon-crucible|kiln|plastanium-compressor|phase-weaver|alloy-smelter|cryofluid-mixer|
                     pyratite-mixer|blast-mixer|melter|separator|disassembler|spore-press|pulverizer|coal-centrifuge|incinerator|
-                    copper-wall|copper-wall-large|titanium-wall|titanium-wall-large|plastanium-wall|plastanium-wall-large|thorium-wall|thorium-wall-large|
-                    phase-wall|phase-wall-large|surge-wall|surge-wall-large|door|door-large|scrap-wall|scrap-wall-large|scrap-wall-huge|scrap-wall-gigantic|thruster|
+                    copper-wall(?:-large)?|titanium-wall(?:-large)?|plastanium-wall(?:-large)?|thorium-wall(?:-large)?|
+                    phase-wall(?:-large)?|surge-wall(?:-large)?|door(?:-large)?|scrap-wall(?:-(?:large|huge|gigantic))?|thruster|
                     mender|mend-projector|overdrive-projector|overdrive-dome|force-projector|shock-mine|
                     conveyor|titanium-conveyor|plastanium-conveyor|armored-conveyor|junction|bridge-conveyor|phase-conveyor|sorter|inverted-sorter|router|distributor|
                     overflow-gate|underflow-gate|mass-driver|payload-conveyor|payload-router|
@@ -66,12 +66,13 @@ repository:
                     duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown|
                     command-center|ground-factory|air-factory|naval-factory|additive-reconstructor|multiplicative-reconstructor|exponential-reconstructor|tetrative-reconstructor|repair-point|resupply-point|
                     power-source|power-void|item-source|item-void|liquid-source|liquid-void|
-                    illuminator|launch-pad|launch-pad-large|interplanetary-accelerator|message|switch|micro-processor|logic-processor|hyper-processor|memory-cell|memory-bank|logic-display|large-logic-display)
+                    illuminator|launch-pad(?:-large)?|interplanetary-accelerator|message|switch|micro-processor|logic-processor|hyper-processor|memory-cell|memory-bank|logic-display|large-logic-display)
                 \b
             comment: |-
               That is a lot... wow... I guess these are technically addressable, albeit never recognized that they can be
               List of all items that are defined in quotes except legacy and experimental items
               From: 'https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/content/Blocks.java'
+              Items in the 'item' and 'item-large' are combined in a single check so 'item' doesn not match 'item-large' by mistake
               # If you're reading this, that means you're pretty cool!
           - name: variable.language.item.mlog
             match: '@(?:scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass)\b'
