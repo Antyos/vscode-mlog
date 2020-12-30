@@ -37,14 +37,26 @@
                 "extensions": [
                     ".mlog"
                 ],
-                "configuration": "./language-configuration.json"
+                "configuration": "./mlog-language-configuration.json"
+            },
+            {
+                "id": "mpro",
+                "aliases": [
+                    "Mindustry Program",
+                    "mindustry program",
+                    "mpro"
+                ],
+                "extensions": [
+                    ".mpro"
+                ],
+                "configuration": "./mpro-language-configuration.json"
             }
         ],
         "grammars": [
             {
-                "language": "mlog",
-                "scopeName": "source.mlog",
-                "path": "./syntaxes/mlog.tmLanguage.json"
+                "language": "mpro",
+                "scopeName": "source.mpro",
+                "path": "./syntaxes/mpro.tmLanguage.json"
             }
         ]
     },
