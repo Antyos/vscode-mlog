@@ -1,0 +1,14 @@
+// MPro syntax highlighting test
+result = 10;
+
+// Print the result
+print("The result is: ", result, '!');
+printFlush(message1);
+
+// Clear display
+draw.clear(50, 50, 50);
+draw.color(50, 50, 50);
+draw.rectLine(25, 25, 50, 50);
+drawflush(display1);
+
+ubind(@zenith);
