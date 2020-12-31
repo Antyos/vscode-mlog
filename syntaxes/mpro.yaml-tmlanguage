@@ -248,16 +248,26 @@ repository:
 
     operators:
         patterns:
-            - name: keyword.operator.assignment.mpro
-              match: '=(?!=)'
-            - name: keyword.operator.arithmetic.mpro
-              match: '\+|-|\*|\/|%|\*\*|\/\/'
+            - name: keyword.operator.decrement.mpro
+              match: --
+            - name: keyword.operator.increment.mpro
+              match: \+\+
+            - name: keyword.operator.assignment.compound.mpro
+              match: '%=|\+=|-=|\*=|(?<!\()/=|\*\*=|//='
+            - name: keyword.operator.assignment.compound.bitwise.mpro
+              match: '&=|\^=|<<=|>>=|\|='
+            - name: keyword.operator.bitwise.shift.mpro
+              match: <<|>>
+            - name: keyword.operator.comparison.mpro
+              match: '!=|<=|>=|==|<|>'
             - name: keyword.operator.logical.mpro
-              match: '!|&&|\|\|'
-            - name: keyword.operator.relational.mpro
-              match: '<=|<|==|!=|>=|>'
-            - name: keyword.operator.conditional.mpro
-              match: '\?|\:'
+              match: '&&|!|\|\|'
+            - name: keyword.operator.bitwise.mpro
+              match: '&|\||\^|~'
+            - name: keyword.operator.assignment.mpro
+              match: '='
+            - name: keyword.operator.mpro
+              match: '%|\*|/|-|\+|\*\*|//'
 
     paren_block:
         name: meta.block.parens.mpro
