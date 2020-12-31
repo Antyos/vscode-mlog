@@ -1,8 +1,6 @@
 name: Mindustry Logic
 fileTypes: [mlog]
 scopeName: source.mlog
-uuid: 235046A8-4282-11EB-B378-0242AC130002
-keyEquivalent: ^~S
 patterns:
   - include: '#commands'
   - include: '#global_constants'
