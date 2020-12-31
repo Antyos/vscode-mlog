@@ -1,256 +1,294 @@
 name: Mindustry Program
-fileTypes: [ mpro ]
+fileTypes: [mpro]
 scopeName: source.mpro
 foldingStartMarker: /\*\*|\{\s*$
 foldingStopMarker: \*\*/|^\s*\}
 patterns:
-- include: '#comments'
-- match: \b(break|continue|do|else|for|if|return|while)\b
-  name: keyword.control.mpro
-- include: '#constants'
-- include: '#opeartors'
-- include: '#numbers'
-- include: '#strings'
+    - include: '#comments'
+    - match: \b(break|continue|do|else|for|if|return|while)\b
+      name: keyword.control.mpro
+    - include: '#constants'
+    - include: '#opeartors'
+    - include: '#numbers'
+    - include: '#strings'
 
-- name: punctuation.terminator.statement.mpro
-  match: \;
-- name: meta.delimiter.object.comma.mpro
-  match: ',[ |\t]*'
-- name: meta.dot.mpro
-  match: '\.(?![0-9])'
+    - name: punctuation.terminator.statement.mpro
+      match: \;
+    - name: meta.delimiter.object.comma.mpro
+      match: ',[ |\t]*'
+    - name: meta.dot.mpro
+      match: '\.(?![0-9])'
 
-# Blocks of {}, [], ()
-- include: '#brace_block'
-- include: '#bracket_block'
-- include: '#paren_block'
+    # Blocks of {}, [], ()
+    - include: '#brace_block'
+    - include: '#bracket_block'
+    - include: '#paren_block'
 
-#################################################################
-# Incorporated from PythonImproved grammar
+    #################################################################
+    # Incorporated from PythonImproved grammar
 
-# Function definition
-- name: meta.function.mpro
-  begin: \b(function)\s+(?=[[:alpha:]_][[:alnum:]_]*)\s*(?=\()
-  beginCaptures:
-    '1': {name: storage.type.function.mpro}
-    # Add invalid name
-  end: (?<=\))
-  endCaptures:
-    '1': {name: punctuation.definition.parameters.begin.mpro}
-  patterns:
-  - contentName: entity.name.function.mpro
-    begin: (?=[[:alpha:]_][[:alnum:]_]*)
-    end: (?![[:alnum:]_])
-    patterns:
-    - include: '#illegal_names'
-    # - include: '#entity_name_function'
-  - contentName: meta.function.parameters.mpro
-    begin: (\()
-    beginCaptures:
-      '1': {name: punctuation.definition.parameters.begin.mpro}
-    end: (?=\))
-    patterns:
-    # - include: '#annotated_arguments'
-    - include: '#keyword_arguments'
-    - include: '#illegal_names'
-    # - include: '#comments'
-    - match: \b(?:([[:alpha:]_][[:alnum:]_]*))\s*(?:(,)|(?=[\n\)]))
-      captures:
-        '1': {name: variable.parameter.function.language.mpro}
-        '2': {name: punctuation.separator.parameters.mpro}
-        '3': {name: punctuation.separator.parameters.mpro}
-  - begin: (\))
-    beginCaptures:
-      '1': {name: punctuation.definition.parameters.end.mpro}
-    end: (?<=\))
-    patterns:
-    - include: $self
+    # Function definition
+    - name: meta.function.mpro
+      begin: \b(function)\s+(?=[[:alpha:]_][[:alnum:]_]*)\s*(?=\()
+      beginCaptures:
+          '1': { name: storage.type.function.mpro }
+          # Add invalid name
+      end: (?<=\))
+      endCaptures:
+          '1': { name: punctuation.definition.parameters.begin.mpro }
+      patterns:
+          - contentName: entity.name.function.mpro
+            begin: (?=[[:alpha:]_][[:alnum:]_]*)
+            end: (?![[:alnum:]_])
+            patterns:
+                - include: '#illegal_names'
+            # - include: '#entity_name_function'
+          - contentName: meta.function.parameters.mpro
+            begin: (\()
+            beginCaptures:
+                '1': { name: punctuation.definition.parameters.begin.mpro }
+            end: (?=\))
+            patterns:
+                # - include: '#annotated_arguments'
+                - include: '#keyword_arguments'
+                - include: '#illegal_names'
+                # - include: '#comments'
+                - match: \b(?:([[:alpha:]_][[:alnum:]_]*))\s*(?:(,)|(?=[\n\)]))
+                  captures:
+                      '1': { name: variable.parameter.function.language.mpro }
+                      '2': { name: punctuation.separator.parameters.mpro }
+                      '3': { name: punctuation.separator.parameters.mpro }
+          - begin: (\))
+            beginCaptures:
+                '1': { name: punctuation.definition.parameters.end.mpro }
+            end: (?<=\))
+            patterns:
+                - include: $self
 
-# After main function decleration to catch stray module / funciton
-- match: '\bfunction\b'
-  name: storage.type.function.mpro
+    # After main function decleration to catch stray module / funciton
+    - match: '\bfunction\b'
+      name: storage.type.function.mpro
 
-# Function call (does not start with 'module' or 'function' but may have a dot separator)
-- name: meta.function-call.mpro
-  begin: (?:\.)?([[:alpha:]_][[:alnum:]_]*)\s*(?=(\())
-  beginCaptures:
-    # NOTE: Should also probably have map: 'meta.function-call.generic.mpro'
-    #       but opted for 'entity.name.function.call.mpro' for coloring purposes
-    '1': {name: entity.name.function.call.mpro}
-    '2': {name: punctuation.definition.arguments.begin.mpro}
-  end: (\))
-  endCaptures:
-    '1': {name: punctuation.definition.arguments.end.mpro}
-  patterns:
-  - contentName: meta.function-call.arguments.mpro
-    begin: (\()
-    beginCaptures:
-      '1': {name: punctuation.definition.arguments.begin.mpro}
-    end: (?=(\)))
-    endCaptures:
-      '1': {name: punctuation.definition.arguments.end.mpro}
-    patterns:
-    - include: '#keyword_arguments'
-    - include: $self
-#################################################################
+    # Function call (does not start with 'module' or 'function' but may have a dot separator)
+    - name: meta.function-call.mpro
+      begin: (?:\.)?([[:alpha:]_][[:alnum:]_]*)\s*(?=(\())
+      beginCaptures:
+          # NOTE: Should also probably have map: 'meta.function-call.generic.mpro'
+          #       but opted for 'entity.name.function.call.mpro' for coloring purposes
+          '1': { name: entity.name.function.call.mpro }
+          '2': { name: punctuation.definition.arguments.begin.mpro }
+      end: (\))
+      endCaptures:
+          '1': { name: punctuation.definition.arguments.end.mpro }
+      patterns:
+          - contentName: meta.function-call.arguments.mpro
+            begin: (\()
+            beginCaptures:
+                '1': { name: punctuation.definition.arguments.begin.mpro }
+            end: (?=(\)))
+            endCaptures:
+                '1': { name: punctuation.definition.arguments.end.mpro }
+            patterns:
+                - include: '#keyword_arguments'
+                - include: $self
+    #################################################################
 
-- include: '#function_builtin'
+    - include: '#function_builtin'
 
 repository:
-  brace_block:
-    name: meta.block.mpro
-    begin: '\{'
-    end: '\}'
-    beginCaptures:
-      '0': {name: punctuation.section.block.begin.bracket.curly.mpro}
-    endCaptures:
-      '0': {name: punctuation.section.block.end.bracket.curly.mpro}
-    patterns:
-    - include: $self
+    brace_block:
+        name: meta.block.mpro
+        begin: '\{'
+        end: '\}'
+        beginCaptures:
+            '0': { name: punctuation.section.block.begin.bracket.curly.mpro }
+        endCaptures:
+            '0': { name: punctuation.section.block.end.bracket.curly.mpro }
+        patterns:
+            - include: $self
 
-  bracket_block:
-    name: meta.block.mpro
-    begin: '\['
-    end: '\]'
-    beginCaptures:
-      '0': {name: punctuation.section.block.begin.bracket.square.mpro}
-    endCaptures:
-      '0': {name: punctuation.section.block.end.bracket.square.mpro}
-    patterns:
-    - include: $self
+    bracket_block:
+        name: meta.block.mpro
+        begin: '\['
+        end: '\]'
+        beginCaptures:
+            '0': { name: punctuation.section.block.begin.bracket.square.mpro }
+        endCaptures:
+            '0': { name: punctuation.section.block.end.bracket.square.mpro }
+        patterns:
+            - include: $self
 
-  comments:
-    patterns:
-    - name: comment.block.documentation.mpro
-      begin: /\*\*(?!/)
-      captures:
-        '0': {name: punctuation.definition.comment.mpro}
-      end: \*/
+    comments:
+        patterns:
+            - name: comment.block.documentation.mpro
+              begin: /\*\*(?!/)
+              captures:
+                  '0': { name: punctuation.definition.comment.mpro }
+              end: \*/
 
-    - name: comment.block.mpro
-      begin: \/\*
-      captures:
-        '0': {name: punctuation.definition.comment.mpro}
-      end: \*\/
+            - name: comment.block.mpro
+              begin: \/\*
+              captures:
+                  '0': { name: punctuation.definition.comment.mpro }
+              end: \*\/
 
-    - name: comment.line.double-slash.mpro
-      match: (\/\/).*$\n?
-      captures:
-        '1': {name: punctuation.definition.comment.mpro}
+            - name: comment.line.double-slash.mpro
+              match: (\/\/).*$\n?
+              captures:
+                  '1': { name: punctuation.definition.comment.mpro }
 
-  constants:
-    patterns:
-    - name: constant.language.boolean.true.mpro
-      match: '\btrue\b'
-    - name: constant.language.boolean.false.mpro
-      match: '\bfalse\b'
-    - name: constant.language.null.mpro
-      match: '\bnull\b'
-  
-  function_builtin:
-    patterns:
-    - name: support.function.mpro
-      match: \b(concat|lookupstr|chr|ord|search|version|version_num|parent_module)\b
-    - name: support.function.mpro
-      match: \b(children|echo|group|offset|render)\b
-    - name: support.function.type-test.mpro
-      match: \b(is_undef|is_bool|is_num|is_string|is_list)\b
-    - name: support.function.math.mpro
-      match: \b(abs|sign|floor|round|ceil|ln|len|log|pow|sqrt|exp|rands|min|max|norm|cross)\b
-    - name: support.function.math.trig.mpro
-      match: \b(sin|cos|asin|acos|tan|atan|atan2)\b
-    - name: support.function.transform.mpro
-      match: \b(scale|translate|rotate|multmatrix|color|projection|hull|resize|mirror|minkowski)\b
-    - name: support.function.boolean.mpro
-      match: \b(union|difference|intersection)\b
-    - name: support.function.prim3d.mpro
-      match: \b(cube|sphere|cylinder|polyhedron)\b
-    - name: support.function.prim2d.mpro
-      match: \b(square|circle|polygon|text)\b
-    - name: support.function.extrude.mpro
-      match: \b(linear_extrude|rotate_extrude)\b
+    constants:
+        patterns:
+            - name: constant.language.boolean.true.mpro
+              match: '\btrue\b'
+            - name: constant.language.boolean.false.mpro
+              match: '\bfalse\b'
+            - name: constant.language.null.mpro
+              match: '\bnull\b'
 
-  illegal_names:
-    name: invalid.illegal.name.mpro
-    match: \b(true|false|module|function|if|else|let)\b
+    function_builtin:
+        patterns:
+            - name: support.function.mpro
+              match: \b(read|write|draw|print|drawflush|printflush|getlink|control|radar|sensor|ubind|ucontrol|uradar|ulocate)\b
 
-  keyword_arguments:
-    comment: Incorporated from PythonImproved grammar
-    begin: \b([[:alpha:]_][[:alnum:]_]*)\s*(=)(?!=)
-    beginCaptures:
-      '1': {name: variable.parameter.function.keyword.mpro}
-      '2': {name: keyword.operator.assignment.mpro}
-    end: \s*(?:(,)|(?=\)))
-    endCaptures:
-      '1': {name: punctuation.separator.parameters.mpro}
-    patterns:
-    - include: $self
+    global_constants:
+        patterns:
+            # Needs single quote otherwise js-yaml fails when first char is '@'
+            - name: variable.language.builtin.mlog
+              match: '@(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter)\b'
+            - name: variable.language.units.mlog
+              match: |-
+                  (?x)
+                  @(?:alpha|beta|gamma|
+                      dagger|mace|crawler|atrax|spiroct|arkyid|toxopid|
+                      flare|horizon|zenith|antumbra|eclipse|fortress|
+                      mono|poly|mega|quad|oct|risso|
+                      minke|bryde|sei|omura|scepter|reign|
+                      nova|pulsar|quasar|vela|corvus)
+                  \b
+            - name: variable.language.block.mlog
+              match: |-
+                  (?x)
+                  @(?:graphite-press|multi-press|silicon-smelter|silicon-crucible|kiln|plastanium-compressor|phase-weaver|alloy-smelter|cryofluid-mixer|
+                      pyratite-mixer|blast-mixer|melter|separator|disassembler|spore-press|pulverizer|coal-centrifuge|incinerator|
+                      copper-wall(?:-large)?|titanium-wall(?:-large)?|plastanium-wall(?:-large)?|thorium-wall(?:-large)?|
+                      phase-wall(?:-large)?|surge-wall(?:-large)?|door(?:-large)?|scrap-wall(?:-(?:large|huge|gigantic))?|thruster|
+                      mender|mend-projector|overdrive-projector|overdrive-dome|force-projector|shock-mine|
+                      conveyor|titanium-conveyor|plastanium-conveyor|armored-conveyor|junction|bridge-conveyor|phase-conveyor|sorter|inverted-sorter|router|distributor|
+                      overflow-gate|underflow-gate|mass-driver|payload-conveyor|payload-router|
+                      mechanical-pump|rotary-pump|thermal-pump|conduit|pulse-conduit|plated-conduit|liquid-router|liquid-tank|liquid-junction|bridge-conduit|phase-conduit|
+                      power-node|power-node-large|surge-tower|diode|battery|battery-large|combustion-generator|thermal-generator|steam-generator|differential-generator|rtg-generator|solar-panel|solar-panel-large|thorium-reactor|impact-reactor|
+                      mechanical-drill|pneumatic-drill|laser-drill|blast-drill|water-extractor|cultivator|oil-extractor|
+                      core-shard|core-foundation|core-nucleus|vault|container|unloader|
+                      duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown|
+                      command-center|ground-factory|air-factory|naval-factory|additive-reconstructor|multiplicative-reconstructor|exponential-reconstructor|tetrative-reconstructor|repair-point|resupply-point|
+                      power-source|power-void|item-source|item-void|liquid-source|liquid-void|
+                      illuminator|launch-pad(?:-large)?|interplanetary-accelerator|message|switch|micro-processor|logic-processor|hyper-processor|memory-cell|memory-bank|logic-display|large-logic-display)
+                  \b
+              comment: |-
+                  That is a lot... wow... I guess these are technically addressable, albeit never recognized that they can be
+                  List of all items that are defined in quotes except legacy and experimental items
+                  From: 'https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/content/Blocks.java'
+                  Items in the 'item' and 'item-large' are combined in a single check so 'item' doesn not match 'item-large' by mistake
+                  # If you're reading this, that means you're pretty cool!
+            - name: variable.language.item.mlog
+              match: '@(?:scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass)\b'
+            - name: variable.language.liquid.mlog
+              match: '@(?:water|slag|oil|cryofluid)'
 
-  let_keyword:
-    name: keyword.control.mpro
-    match: '\b(let)\b'
+            - name: variable.language.special.mlog
+              match: '@(?:solid|air)'
+            - name: variable.language.sensor.mlog
+              match: |-
+                  (?x)
+                  @(?:totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|
+                      powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|
+                      maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|
+                      team|type|flag|controlled|commanded|name|config|payloadCount|payloadType)
+                  \b
 
-  numbers:
-    patterns:
-    # Incorporated from PythonImproved grammar
-    - comment: Ummm... why do we have three of these? This is one...
-      name: constant.numeric.float.mpro
-      match: \b(?i:(\d+\.\d*(e[\-\+]?\d+)?))(?=[^[:alpha:]_])
+    illegal_names:
+        name: invalid.illegal.name.mpro
+        match: \b(true|false|module|function|if|else|let)\b
 
-    - comment: This is two...
-      name: constant.numeric.float.mpro
-      match: (?<=[^[:alnum:]_])(?i:(\.\d+(e[\-\+]?\d+)?))
+    keyword_arguments:
+        comment: Incorporated from PythonImproved grammar
+        begin: \b([[:alpha:]_][[:alnum:]_]*)\s*(=)(?!=)
+        beginCaptures:
+            '1': { name: variable.parameter.function.keyword.mpro }
+            '2': { name: keyword.operator.assignment.mpro }
+        end: \s*(?:(,)|(?=\)))
+        endCaptures:
+            '1': { name: punctuation.separator.parameters.mpro }
+        patterns:
+            - include: $self
 
-    - comment: And this is three...
-      name: constant.numeric.float.mpro
-      match: \b(?i:(\d+e[\-\+]?\d+))
+    let_keyword:
+        name: keyword.control.mpro
+        match: '\b(let)\b'
 
-    - name: constant.numeric.integer.decimal.mpro
-      match: \b([1-9]+[0-9]*|0)
+    numbers:
+        patterns:
+            # Incorporated from PythonImproved grammar
+            - comment: Ummm... why do we have three of these? This is one...
+              name: constant.numeric.float.mpro
+              match: \b(?i:(\d+\.\d*(e[\-\+]?\d+)?))(?=[^[:alpha:]_])
 
-  operators:
-    patterns:
-    - name: keyword.operator.assignment.mpro
-      match: '=(?!=)'
-    - name: keyword.operator.arithmetic.mpro
-      match: '\+|-|\*|\/|%|\*\*|\/\/'
-    - name: keyword.operator.logical.mpro
-      match: '!|&&|\|\|'
-    - name: keyword.operator.relational.mpro
-      match: '<=|<|==|!=|>=|>'
-    - name: keyword.operator.conditional.mpro
-      match: '\?|\:'
+            - comment: This is two...
+              name: constant.numeric.float.mpro
+              match: (?<=[^[:alnum:]_])(?i:(\.\d+(e[\-\+]?\d+)?))
 
-  paren_block:
-    name: meta.block.parens.mpro
-    begin: '\('
-    end: '\)'
-    beginCaptures:
-      '0': {name: punctuation.section.parens.begin.bracket.round.mpro}
-    endCaptures:
-      '0': {name: punctuation.section.parens.end.bracket.round.mpro}
-    patterns:
-    - include: $self
+            - comment: And this is three...
+              name: constant.numeric.float.mpro
+              match: \b(?i:(\d+e[\-\+]?\d+))
 
-  string:
-    patterns:
-    - name: string.quoted.single.mpro
-      begin: "'"
-      beginCaptures:
-        '0': {name: punctuation.definition.string.begin.mpro}
-      end: "'"
-      endCaptures:
-        '0': {name: punctuation.definition.string.end.mpro}
-      patterns:
-      - name: constant.character.escape.mpro
-        match: \\[nt'"]
+            - name: constant.numeric.integer.decimal.mpro
+              match: \b([1-9]+[0-9]*|0)
 
-    - name: string.quoted.double.mpro
-      begin: '"'
-      beginCaptures:
-        '0': {name: punctuation.definition.string.begin.mpro}
-      end: '"'
-      endCaptures:
-        '0': {name: punctuation.definition.string.end.mpro}
-      patterns:
-      - name: constant.character.escape.mpro
-        match: \\[nt'"]
+    operators:
+        patterns:
+            - name: keyword.operator.assignment.mpro
+              match: '=(?!=)'
+            - name: keyword.operator.arithmetic.mpro
+              match: '\+|-|\*|\/|%|\*\*|\/\/'
+            - name: keyword.operator.logical.mpro
+              match: '!|&&|\|\|'
+            - name: keyword.operator.relational.mpro
+              match: '<=|<|==|!=|>=|>'
+            - name: keyword.operator.conditional.mpro
+              match: '\?|\:'
+
+    paren_block:
+        name: meta.block.parens.mpro
+        begin: '\('
+        end: '\)'
+        beginCaptures:
+            '0': { name: punctuation.section.parens.begin.bracket.round.mpro }
+        endCaptures:
+            '0': { name: punctuation.section.parens.end.bracket.round.mpro }
+        patterns:
+            - include: $self
+
+    string:
+        patterns:
+            - name: string.quoted.single.mpro
+              begin: "'"
+              beginCaptures:
+                  '0': { name: punctuation.definition.string.begin.mpro }
+              end: "'"
+              endCaptures:
+                  '0': { name: punctuation.definition.string.end.mpro }
+              patterns:
+                  - name: constant.character.escape.mpro
+                    match: \\[nt'"]
+
+            - name: string.quoted.double.mpro
+              begin: '"'
+              beginCaptures:
+                  '0': { name: punctuation.definition.string.begin.mpro }
+              end: '"'
+              endCaptures:
+                  '0': { name: punctuation.definition.string.end.mpro }
+              patterns:
+                  - name: constant.character.escape.mpro
+                    match: \\[nt'"]
