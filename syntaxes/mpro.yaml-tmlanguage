@@ -119,6 +119,7 @@ repository:
     - include: $self
 
   comments:
+    patterns:
     - name: comment.block.documentation.mpro
       begin: /\*\*(?!/)
       captures:
@@ -233,10 +234,10 @@ repository:
   string:
     patterns:
     - name: string.quoted.single.mpro
-      begin: '\''
+      begin: "'"
       beginCaptures:
         '0': {name: punctuation.definition.string.begin.mpro}
-      end: '\''
+      end: "'"
       endCaptures:
         '0': {name: punctuation.definition.string.end.mpro}
       patterns:
@@ -253,4 +254,3 @@ repository:
       patterns:
       - name: constant.character.escape.mpro
         match: \\[nt'"]
-
