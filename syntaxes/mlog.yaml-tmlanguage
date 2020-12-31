@@ -3,7 +3,7 @@ fileTypes: [mlog]
 scopeName: source.mlog
 patterns:
   - include: '#commands'
-  - include: '#global_constants'
+  - include: '#at_constants'
   - include: '#jump_conditions'
   - include: '#operations'
   - include: '#comments'
@@ -32,7 +32,7 @@ repository:
         captures:
             '1': {name: punctuation.definition.comment.mlog}
 
-    global_constants:
+    at_constants:
         patterns:
             # Needs single quote otherwise js-yaml fails when first char is '@'
           - name: variable.language.builtin.mlog

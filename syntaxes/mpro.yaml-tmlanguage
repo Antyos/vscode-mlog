@@ -8,6 +8,7 @@ patterns:
     - match: \b(break|continue|do|else|for|if|return|while)\b
       name: keyword.control.mpro
     - include: '#constants'
+    - include: '#at_constants'
     - include: '#opeartors'
     - include: '#numbers'
     - include: '#strings'
@@ -151,7 +152,7 @@ repository:
             - name: support.function.mpro
               match: \b(read|write|draw|print|drawflush|printflush|getlink|control|radar|sensor|ubind|ucontrol|uradar|ulocate)\b
 
-    global_constants:
+    at_constants:
         patterns:
             # Needs single quote otherwise js-yaml fails when first char is '@'
             - name: variable.language.builtin.mlog
@@ -269,7 +270,7 @@ repository:
         patterns:
             - include: $self
 
-    string:
+    strings:
         patterns:
             - name: string.quoted.single.mpro
               begin: "'"

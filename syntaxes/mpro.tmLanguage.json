@@ -18,6 +18,9 @@
       "include": "#constants"
     },
     {
+      "include": "#at_constants"
+    },
+    {
       "include": "#opeartors"
     },
     {
@@ -265,43 +268,40 @@
       "patterns": [
         {
           "name": "support.function.mpro",
-          "match": "\\b(concat|lookupstr|chr|ord|search|version|version_num|parent_module)\\b"
+          "match": "\\b(read|write|draw|print|drawflush|printflush|getlink|control|radar|sensor|ubind|ucontrol|uradar|ulocate)\\b"
+        }
+      ]
+    },
+    "at_constants": {
+      "patterns": [
+        {
+          "name": "variable.language.builtin.mlog",
+          "match": "@(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter)\\b"
         },
         {
-          "name": "support.function.mpro",
-          "match": "\\b(children|echo|group|offset|render)\\b"
+          "name": "variable.language.units.mlog",
+          "match": "(?x)\n@(?:alpha|beta|gamma|\n    dagger|mace|crawler|atrax|spiroct|arkyid|toxopid|\n    flare|horizon|zenith|antumbra|eclipse|fortress|\n    mono|poly|mega|quad|oct|risso|\n    minke|bryde|sei|omura|scepter|reign|\n    nova|pulsar|quasar|vela|corvus)\n\\b"
         },
         {
-          "name": "support.function.type-test.mpro",
-          "match": "\\b(is_undef|is_bool|is_num|is_string|is_list)\\b"
+          "name": "variable.language.block.mlog",
+          "match": "(?x)\n@(?:graphite-press|multi-press|silicon-smelter|silicon-crucible|kiln|plastanium-compressor|phase-weaver|alloy-smelter|cryofluid-mixer|\n    pyratite-mixer|blast-mixer|melter|separator|disassembler|spore-press|pulverizer|coal-centrifuge|incinerator|\n    copper-wall(?:-large)?|titanium-wall(?:-large)?|plastanium-wall(?:-large)?|thorium-wall(?:-large)?|\n    phase-wall(?:-large)?|surge-wall(?:-large)?|door(?:-large)?|scrap-wall(?:-(?:large|huge|gigantic))?|thruster|\n    mender|mend-projector|overdrive-projector|overdrive-dome|force-projector|shock-mine|\n    conveyor|titanium-conveyor|plastanium-conveyor|armored-conveyor|junction|bridge-conveyor|phase-conveyor|sorter|inverted-sorter|router|distributor|\n    overflow-gate|underflow-gate|mass-driver|payload-conveyor|payload-router|\n    mechanical-pump|rotary-pump|thermal-pump|conduit|pulse-conduit|plated-conduit|liquid-router|liquid-tank|liquid-junction|bridge-conduit|phase-conduit|\n    power-node|power-node-large|surge-tower|diode|battery|battery-large|combustion-generator|thermal-generator|steam-generator|differential-generator|rtg-generator|solar-panel|solar-panel-large|thorium-reactor|impact-reactor|\n    mechanical-drill|pneumatic-drill|laser-drill|blast-drill|water-extractor|cultivator|oil-extractor|\n    core-shard|core-foundation|core-nucleus|vault|container|unloader|\n    duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown|\n    command-center|ground-factory|air-factory|naval-factory|additive-reconstructor|multiplicative-reconstructor|exponential-reconstructor|tetrative-reconstructor|repair-point|resupply-point|\n    power-source|power-void|item-source|item-void|liquid-source|liquid-void|\n    illuminator|launch-pad(?:-large)?|interplanetary-accelerator|message|switch|micro-processor|logic-processor|hyper-processor|memory-cell|memory-bank|logic-display|large-logic-display)\n\\b",
+          "comment": "That is a lot... wow... I guess these are technically addressable, albeit never recognized that they can be\nList of all items that are defined in quotes except legacy and experimental items\nFrom: 'https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/content/Blocks.java'\nItems in the 'item' and 'item-large' are combined in a single check so 'item' doesn not match 'item-large' by mistake\n# If you're reading this, that means you're pretty cool!"
         },
         {
-          "name": "support.function.math.mpro",
-          "match": "\\b(abs|sign|floor|round|ceil|ln|len|log|pow|sqrt|exp|rands|min|max|norm|cross)\\b"
+          "name": "variable.language.item.mlog",
+          "match": "@(?:scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass)\\b"
         },
         {
-          "name": "support.function.math.trig.mpro",
-          "match": "\\b(sin|cos|asin|acos|tan|atan|atan2)\\b"
+          "name": "variable.language.liquid.mlog",
+          "match": "@(?:water|slag|oil|cryofluid)"
         },
         {
-          "name": "support.function.transform.mpro",
-          "match": "\\b(scale|translate|rotate|multmatrix|color|projection|hull|resize|mirror|minkowski)\\b"
+          "name": "variable.language.special.mlog",
+          "match": "@(?:solid|air)"
         },
         {
-          "name": "support.function.boolean.mpro",
-          "match": "\\b(union|difference|intersection)\\b"
-        },
-        {
-          "name": "support.function.prim3d.mpro",
-          "match": "\\b(cube|sphere|cylinder|polyhedron)\\b"
-        },
-        {
-          "name": "support.function.prim2d.mpro",
-          "match": "\\b(square|circle|polygon|text)\\b"
-        },
-        {
-          "name": "support.function.extrude.mpro",
-          "match": "\\b(linear_extrude|rotate_extrude)\\b"
+          "name": "variable.language.sensor.mlog",
+          "match": "(?x)\n@(?:totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|\n    powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|\n    maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|\n    team|type|flag|controlled|commanded|name|config|payloadCount|payloadType)\n\\b"
         }
       ]
     },
@@ -403,7 +403,7 @@
         }
       ]
     },
-    "string": {
+    "strings": {
       "patterns": [
         {
           "name": "string.quoted.single.mpro",
