@@ -54,6 +54,11 @@
         ],
         "grammars": [
             {
+                "language": "mlog",
+                "scopeName": "source.mlog",
+                "path": "./syntaxes/mlog.tmLanguage.json"
+            },
+            {
                 "language": "mpro",
                 "scopeName": "source.mpro",
                 "path": "./syntaxes/mpro.tmLanguage.json"
@@ -65,7 +70,8 @@
         "compile": "tsc -p ./",
         "lint": "tslint -p ./",
         "watch": "tsc -watch -p ./",
-        "update-grammar": "js-yaml syntaxes/mlog.yaml-tmLanguage > syntaxes/mlog.tmLanguage.json"
+        "update-grammar:mlog": "js-yaml syntaxes/mlog.yaml-tmLanguage > syntaxes/mlog.tmLanguage.json",
+        "update-grammar:mpro": "js-yaml syntaxes/mpro.yaml-tmLanguage > syntaxes/mpro.tmLanguage.json"
     },
     "devDependencies": {
         "@types/node": "^9.4.6",
