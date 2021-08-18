@@ -13,30 +13,9 @@ patterns:
   - include: '#string'
 
 repository:
-    commands:
+    at_names:
         patterns:
-          - name: support.function.mlog
-            match: \b(read|write|draw|print|drawflush|printflush|getlink|control|radar|sensor|ubind|ucontrol|uradar|ulocate)\b
-          - name: keyword.control.end.mlog
-            match: \bend\b
-          - name: keyword.control.jump.mlog
-            match: \bjump\b
-          - name: keyword.control.set.mlog
-            match: \bset\b
-          - name: keyword.control.op.mlog
-            match: \bop\b
-          - name: keyword.control.noop.mlog
-            match: \bnoop\b
-
-    comments:
-        name: comment.line.number-sign.mlog
-        match: (#+).*$
-        captures:
-            '1': {name: punctuation.definition.comment.mlog}
-
-    global_constants:
-        patterns:
-            # Needs single quote otherwise js-yaml fails when first char is '@'
+          # Needs single quote otherwise js-yaml fails when first char is '@'
           - name: variable.language.builtin.mlog
             match: '@(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter)\b'
           - name: variable.language.units.mlog
@@ -89,7 +68,31 @@ repository:
                     maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|
                     team|type|flag|controlled|commanded|name|config|payloadCount|payloadType)
                 \b
-            
+
+    commands:
+        patterns:
+          - name: support.function.mlog
+            match: \b(read|write|draw|print|drawflush|printflush|getlink|control|radar|sensor|ubind|ucontrol|uradar|ulocate)\b
+          - name: keyword.control.end.mlog
+            match: \bend\b
+          - name: keyword.control.jump.mlog
+            match: \bjump\b
+          - name: keyword.control.set.mlog
+            match: \bset\b
+          - name: keyword.control.op.mlog
+            match: \bop\b
+          - name: keyword.control.noop.mlog
+            match: \bnoop\b
+
+    comments:
+        name: comment.line.number-sign.mlog
+        match: (#+).*$
+        captures:
+            '1': {name: punctuation.definition.comment.mlog}
+
+    global_constants:
+        patterns:
+          - include: '#at_names'
             # Default constants
           - name: constant.language.boolean.true.mlog
             match: '\btrue\b'
