@@ -68,6 +68,8 @@ repository:
                     maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|
                     team|type|flag|controlled|commanded|name|config|payloadCount|payloadType)
                 \b
+          - name: variable.language.generic_at_name.mlog
+            match: '@[A-Za-z\-]+'
 
     commands:
         patterns:
