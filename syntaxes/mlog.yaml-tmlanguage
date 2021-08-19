@@ -15,7 +15,7 @@ patterns:
 repository:
     at_names:
         patterns:
-          # Needs single quote otherwise js-yaml fails when first char is '@'
+          # Needs single quote around match pattern becuase js-yaml fails when first char is '@'
           - name: variable.language.builtin.mlog
             match: '@(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter)\b'
           - name: variable.language.units.mlog
@@ -28,31 +28,55 @@ repository:
                     minke|bryde|sei|omura|scepter|reign|
                     nova|pulsar|quasar|vela|corvus)
                 \b
-          - name: variable.language.block.mlog
+          
+          # Block list obtained from: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/content/Blocks.java
+          # List of all items that are defined in quotes except legacy and experimental items
+          # Items in the 'item' and 'item-large' are combined in a single check so 'item' does not match 'item-large' by mistake
+          - name: variable.language.block.crafting.mlog
             match: |-
                 (?x)
-                @(?:graphite-press|multi-press|silicon-smelter|silicon-crucible|kiln|plastanium-compressor|phase-weaver|alloy-smelter|cryofluid-mixer|
-                    pyratite-mixer|blast-mixer|melter|separator|disassembler|spore-press|pulverizer|coal-centrifuge|incinerator|
-                    copper-wall(?:-large)?|titanium-wall(?:-large)?|plastanium-wall(?:-large)?|thorium-wall(?:-large)?|
-                    phase-wall(?:-large)?|surge-wall(?:-large)?|door(?:-large)?|scrap-wall(?:-(?:large|huge|gigantic))?|thruster|
-                    mender|mend-projector|overdrive-projector|overdrive-dome|force-projector|shock-mine|
-                    (?:(?:titanium|plastanium|armored|bridge|phase)-)?conveyor|junction|(?:intverted-)?sorter|router|distributor|
-                    (?:over|under)flow-gate|mass-driver|payload-conveyor|payload-router|
-                    (?:mechanical|rotary|thermal)-pump|(?:(?:pulse|plated|bridge|phase)-)?conduit|liquid-(?:router|tank|junction)|
-                    power-node(?:-large)?|surge-tower|diode|battery(?:-large)?|(?:combustion|thermal|steam|differential|rtg)-generator|solar-panel(?:-large)?|(?:thorium|impact)-reactor|
-                    (?:mechanical|pneumatic|laser|blast)-drill|water-extractor|cultivator|oil-extractor|
-                    core-(?:shard|foundation|nucleus)|vault|container|unloader|
-                    duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown|
-                    command-center|(?:ground|air|naval)-factory|(?:additive|multiplicative|exponential|tetrative)-reconstructor|repair-point|resupply-point|
-                    power-source|power-void|item-source|item-void|liquid-source|liquid-void|
-                    illuminator|launch-pad(?:-large)?|interplanetary-accelerator|message|switch|(?:micro|logic|hyper)-processor|memory-cell|memory-bank|(?:large-)?logic-display)
+                @(?:graphite-press|multi-press|silicon-smelter|silicon-crucible|kiln|plastanium-compressor|phase-weaver|alloy-smelter|
+                    cryofluid-mixer|pyratite-mixer|blast-mixer|melter|separator|disassembler|spore-press|pulverizer|coal-centrifuge|incinerator)
                 \b
-            comment: |-
-              That is a lot... wow... I guess these are technically addressable, albeit never recognized that they can be
-              List of all items that are defined in quotes except legacy and experimental items
-              From: 'https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/content/Blocks.java'
-              Items in the 'item' and 'item-large' are combined in a single check so 'item' doesn not match 'item-large' by mistake
-              # If you're reading this, that means you're pretty cool!
+          - name: variable.language.block.defense.mlog
+            match: |-
+                (?x)
+                @(?:copper-wall(?:-large)?|titanium-wall(?:-large)?|plastanium-wall(?:-large)?|thorium-wall(?:-large)?|
+                    phase-wall(?:-large)?|surge-wall(?:-large)?|door(?:-large)?|scrap-wall(?:-(?:large|huge|gigantic))?|thruster|
+                    mender|mend-projector|overdrive-projector|overdrive-dome|force-projector|shock-mine)
+                \b
+          - name: variable.language.block.distribution.mlog
+            match: |-
+                (?x)
+                @(?:(?:(?:titanium|plastanium|armored|bridge|phase)-)?conveyor|junction|(?:intverted-)?sorter|router|distributor|
+                    (?:over|under)flow-gate|mass-driver)
+                \b
+          - name: variable.language.block.liquid.mlog
+            match: @(?:(?:mechanical|rotary|thermal)-pump|(?:(?:pulse|plated|bridge|phase)-)?conduit|liquid-(?:router|tank|junction))\b
+          - name: variable.language.block.power.mlog
+            match: |-
+                (?x)
+                @(?:power-node(?:-large)?|surge-tower|diode|battery(?:-large)?|
+                    (?:combustion|thermal|steam|differential|rtg)-generator|solar-panel(?:-large)?|(?:thorium|impact)-reactor)
+                \b
+          - name: variable.language.block.production.mlog
+            match: @(?:(?:mechanical|pneumatic|laser|blast)-drill|water-extractor|cultivator|oil-extractor)\b
+          - name: variable.language.block.storage.mlog
+            match: @(?:core-(?:shard|foundation|nucleus)|vault|container|unloader)\b
+          - name: variable.language.block.turrets.mlog
+            match: @(?:duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown)\b
+          - name: variable.language.block.units.mlog
+            match: @(?:command-center|(?:ground|air|naval)-factory|(?:additive|multiplicative|exponential|tetrative)-reconstructor|repair-point|resupply-point)\b
+          - name: variable.language.block.payloads.mlog
+            match: @(?:payload-(?:conveyor|router|propulsion-tower))\b
+          - name: variable.language.block.sandbox.mlog
+            match: @(?:(?:power|item|liquid|payload)-(?:source|void)|illuminator)\b
+          - name: variable.language.block.campaign.mlog
+            match: @(?:launch-pad|interplanetary-accelerator)\b
+          - name: variable.language.block.logic.mlog
+            match: @(?:message|switch|(?:micro|logic|hyper)-processor|memory-(?:cell|bank)|(?:large-)?logic-display)\b
+          # End of blocks
+          
           - name: variable.language.item.mlog
             match: '@(?:scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass)\b'
           - name: variable.language.liquid.mlog
@@ -69,7 +93,7 @@ repository:
                     team|type|flag|controlled|commanded|name|config|payloadCount|payloadType)
                 \b
           - name: variable.language.generic_at_name.mlog
-            match: '@[A-Za-z\-]+'
+            match: '@[A-Za-z\-]+\b'
 
     commands:
         patterns:
