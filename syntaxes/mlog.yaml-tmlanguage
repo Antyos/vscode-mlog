@@ -8,6 +8,7 @@ patterns:
   - include: '#global_constants'
   - include: '#jump_conditions'
   - include: '#operations'
+  - include: '#jump_labels'
   - include: '#comments'
   - include: '#numbers'
   - include: '#string'
@@ -149,6 +150,13 @@ repository:
         # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/ConditionOp.java
         name: constant.language.jump-condition.mlog
         match: \b(?:equal|notEqual|strictEqual|lessThan|lessThanEq|greaterThan|greaterThanEq|always)\b
+      
+    jump_labels:
+        name: entity.name.function.mlog
+        match: \b([[:alnum:]_]+)(:)(?=\s|$)
+        captures:
+            '1': {name: entity.name.function.mlog}
+            '2': {name: punctuation.separator.mlog}
 
     numbers:
         patterns:
