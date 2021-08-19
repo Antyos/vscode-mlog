@@ -36,16 +36,16 @@ repository:
                     copper-wall(?:-large)?|titanium-wall(?:-large)?|plastanium-wall(?:-large)?|thorium-wall(?:-large)?|
                     phase-wall(?:-large)?|surge-wall(?:-large)?|door(?:-large)?|scrap-wall(?:-(?:large|huge|gigantic))?|thruster|
                     mender|mend-projector|overdrive-projector|overdrive-dome|force-projector|shock-mine|
-                    conveyor|titanium-conveyor|plastanium-conveyor|armored-conveyor|junction|bridge-conveyor|phase-conveyor|sorter|inverted-sorter|router|distributor|
-                    overflow-gate|underflow-gate|mass-driver|payload-conveyor|payload-router|
-                    mechanical-pump|rotary-pump|thermal-pump|conduit|pulse-conduit|plated-conduit|liquid-router|liquid-tank|liquid-junction|bridge-conduit|phase-conduit|
-                    power-node|power-node-large|surge-tower|diode|battery|battery-large|combustion-generator|thermal-generator|steam-generator|differential-generator|rtg-generator|solar-panel|solar-panel-large|thorium-reactor|impact-reactor|
-                    mechanical-drill|pneumatic-drill|laser-drill|blast-drill|water-extractor|cultivator|oil-extractor|
-                    core-shard|core-foundation|core-nucleus|vault|container|unloader|
+                    (?:(?:titanium|plastanium|armored|bridge|phase)-)?conveyor|junction|(?:intverted-)?sorter|router|distributor|
+                    (?:over|under)flow-gate|mass-driver|payload-conveyor|payload-router|
+                    (?:mechanical|rotary|thermal)-pump|(?:(?:pulse|plated|bridge|phase)-)?conduit|liquid-(?:router|tank|junction)|
+                    power-node(?:-large)?|surge-tower|diode|battery(?:-large)?|(?:combustion|thermal|steam|differential|rtg)-generator|solar-panel(?:-large)?|(?:thorium|impact)-reactor|
+                    (?:mechanical|pneumatic|laser|blast)-drill|water-extractor|cultivator|oil-extractor|
+                    core-(?:shard|foundation|nucleus)|vault|container|unloader|
                     duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown|
-                    command-center|ground-factory|air-factory|naval-factory|additive-reconstructor|multiplicative-reconstructor|exponential-reconstructor|tetrative-reconstructor|repair-point|resupply-point|
+                    command-center|(?:ground|air|naval)-factory|(?:additive|multiplicative|exponential|tetrative)-reconstructor|repair-point|resupply-point|
                     power-source|power-void|item-source|item-void|liquid-source|liquid-void|
-                    illuminator|launch-pad(?:-large)?|interplanetary-accelerator|message|switch|micro-processor|logic-processor|hyper-processor|memory-cell|memory-bank|logic-display|large-logic-display)
+                    illuminator|launch-pad(?:-large)?|interplanetary-accelerator|message|switch|(?:micro|logic|hyper)-processor|memory-cell|memory-bank|(?:large-)?logic-display)
                 \b
             comment: |-
               That is a lot... wow... I guess these are technically addressable, albeit never recognized that they can be
