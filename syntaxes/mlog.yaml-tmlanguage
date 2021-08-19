@@ -168,9 +168,21 @@ repository:
             match: \b([1-9]+[0-9]*|0)
     
     operations:
-        name: constant.language.operation.mlog
-        match: \b(?:add|sub|mul|div|idiv|mod|pow|equal|notEqual|land|lessThan|lessThanEq|greaterThan|greaterThanEq|shl|shr|or|and|xor|not|max|min|atan2|dst|noise|abs|log|log10|sin|cos|tan|floor|ceil|sqrt|rand)\b
-        comment: Does not include comparisons covered by #jump_conditions
+        # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/LogicOp.java
+        patterns:
+          - name: constant.language.operation.mlog
+            match: |-
+                (?x)
+                \b(?:
+                    add|sub|mul|div|idiv|mod|pow|equal|notEqual|strictEqual|land|lessThan|
+                    lessThanEq|greaterThan|greaterThanEq|shl|shr|or|and|xor|not|max|min|
+                    angle|len|noise|abs|log|log10|sin|cos|tan|asin|acos|atan|floor|ceil|
+                    sqrt|rand
+                )\b
+            comment: Does not include comparisons covered by #jump_conditions
+          - name: invalid.deprecated.operation.mlog
+            match: \b(?:atan2|dst)\b
+            comment: `atan2` and `dst` were removed in favor of `angle` and `len`, respectively
 
     string:
         name: string.quoted.double.mlog
