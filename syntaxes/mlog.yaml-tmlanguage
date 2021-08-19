@@ -17,7 +17,7 @@ repository:
         patterns:
           # Needs single quote around match pattern becuase js-yaml fails when first char is '@'
           - name: variable.language.builtin.mlog
-            match: '@(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter)\b'
+            match: '@(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter|tick)\b'
           - name: variable.language.units.mlog
             match: |-
                 (?x)
@@ -93,8 +93,17 @@ repository:
                     team|type|flag|controlled|name|config|payloadCount|payloadType|
                     progress|timescale|size|dead|range|boosting|controller)
                 \b
+
+          # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/GlobalConstants.java
+          - name: variable.language.counts.mlog
+            match: '@(?:block|unit|item|liquid)Count\b'
+          - name: variable.language.controlled.mlog
+            match: '@ctrl(?:Processor|Player|Formation)\b'
+            
+            # Deprecated
           - name: invalid.deprecated.mlog
             match: '@commanded\b'
+            comment: '@commanded was deprecated in favor of @controlled'
 
           # Catch other at-names
           - name: variable.language.generic_at_name.mlog
