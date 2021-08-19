@@ -52,7 +52,7 @@ repository:
                     (?:over|under)flow-gate|mass-driver)
                 \b
           - name: variable.language.block.liquid.mlog
-            match: @(?:(?:mechanical|rotary|thermal)-pump|(?:(?:pulse|plated|bridge|phase)-)?conduit|liquid-(?:router|tank|junction))\b
+            match: '@(?:(?:mechanical|rotary|thermal)-pump|(?:(?:pulse|plated|bridge|phase)-)?conduit|liquid-(?:router|tank|junction))\b'
           - name: variable.language.block.power.mlog
             match: |-
                 (?x)
@@ -60,21 +60,21 @@ repository:
                     (?:combustion|thermal|steam|differential|rtg)-generator|solar-panel(?:-large)?|(?:thorium|impact)-reactor)
                 \b
           - name: variable.language.block.production.mlog
-            match: @(?:(?:mechanical|pneumatic|laser|blast)-drill|water-extractor|cultivator|oil-extractor)\b
+            match: '@(?:(?:mechanical|pneumatic|laser|blast)-drill|water-extractor|cultivator|oil-extractor)\b'
           - name: variable.language.block.storage.mlog
-            match: @(?:core-(?:shard|foundation|nucleus)|vault|container|unloader)\b
+            match: '@(?:core-(?:shard|foundation|nucleus)|vault|container|unloader)\b'
           - name: variable.language.block.turrets.mlog
-            match: @(?:duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown)\b
+            match: '@(?:duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown)\b'
           - name: variable.language.block.units.mlog
-            match: @(?:command-center|(?:ground|air|naval)-factory|(?:additive|multiplicative|exponential|tetrative)-reconstructor|repair-point|resupply-point)\b
+            match: '@(?:command-center|(?:ground|air|naval)-factory|(?:additive|multiplicative|exponential|tetrative)-reconstructor|repair-point|resupply-point)\b'
           - name: variable.language.block.payloads.mlog
-            match: @(?:payload-(?:conveyor|router|propulsion-tower))\b
+            match: '@(?:payload-(?:conveyor|router|propulsion-tower))\b'
           - name: variable.language.block.sandbox.mlog
-            match: @(?:(?:power|item|liquid|payload)-(?:source|void)|illuminator)\b
+            match: '@(?:(?:power|item|liquid|payload)-(?:source|void)|illuminator)\b'
           - name: variable.language.block.campaign.mlog
-            match: @(?:launch-pad|interplanetary-accelerator)\b
+            match: '@(?:launch-pad|interplanetary-accelerator)\b'
           - name: variable.language.block.logic.mlog
-            match: @(?:message|switch|(?:micro|logic|hyper)-processor|memory-(?:cell|bank)|(?:large-)?logic-display)\b
+            match: '@(?:message|switch|(?:micro|logic|hyper)-processor|memory-(?:cell|bank)|(?:large-)?logic-display)\b'
           # End of blocks
           
           - name: variable.language.item.mlog
