@@ -146,8 +146,9 @@ repository:
             comment: I'm not really sure why this is here, but it's in 'https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/GlobalConstants.java'
 
     jump_conditions:
+        # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/ConditionOp.java
         name: constant.language.jump-condition.mlog
-        match: \b(?:equal|notEqual|lessThan|lessThanEq|greaterThan|greaterThanEq|always)\b
+        match: \b(?:equal|notEqual|strictEqual|lessThan|lessThanEq|greaterThan|greaterThanEq|always)\b
 
     numbers:
         patterns:
