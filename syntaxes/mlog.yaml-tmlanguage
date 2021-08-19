@@ -101,9 +101,10 @@ repository:
             match: '@[A-Za-z\-]+\b'
 
     commands:
+        # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/LStatements.java
         patterns:
           - name: support.function.mlog
-            match: \b(read|write|draw|print|drawflush|printflush|getlink|control|radar|sensor|ubind|ucontrol|uradar|ulocate)\b
+            match: \b(read|write|draw|print|drawflush|printflush|getlink|control|radar|sensor|ubind|ucontrol|uradar|ulocate|wait|lookup)\b
           - name: keyword.control.end.mlog
             match: \bend\b
           - name: keyword.control.jump.mlog
