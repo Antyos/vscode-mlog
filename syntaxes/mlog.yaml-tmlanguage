@@ -25,18 +25,27 @@ repository:
                     # Needs quote around match pattern becuase js-yaml fails when first char is '@'
                     - name: variable.language.builtin.mlog
                       match: '(?<=@)(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter|tick)'
-                    - name: variable.language.units.mlog
-                      match: |-
-                          (?x)
-                          (?<=@)(?:
-                              alpha|beta|gamma|
-                              dagger|mace|crawler|atrax|spiroct|arkyid|toxopid|
-                              flare|horizon|zenith|antumbra|eclipse|fortress|
-                              mono|poly|mega|quad|oct|risso|
-                              minke|bryde|sei|omura|scepter|reign|
-                              nova|pulsar|quasar|vela|corvus
-                          )
-                    
+                    - include: '#blocks'
+                    - include: '#items'
+                    - include: '#liquids'
+                    - name: variable.language.special.mlog
+                      match: '(?<=@)(?:solid|air)'
+                    - include: '#sensor'
+
+                    # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/GlobalConstants.java
+                    - name: variable.language.counts.mlog
+                      match: '(?<=@)(?:block|unit|item|liquid)Count'
+                    - name: variable.language.controlled.mlog
+                      match: '(?<=@)ctrl(?:Processor|Player|Formation)'
+                      
+                      # Deprecated
+                    - name: invalid.deprecated.mlog
+                      match: '(?<=@)commanded\b'
+                      comment: '@commanded was deprecated in favor of @controlled'
+
+        repository:
+            blocks:
+                patterns:
                     # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/content/Blocks.java
                     # List of all items that are defined in quotes except legacy and experimental items
                     # Items in the 'item' and 'item-large' are combined in a single check so 'item' does not match 'item-large' by mistake
@@ -95,37 +104,36 @@ repository:
                       match: '(?<=@)(?:launch-pad|interplanetary-accelerator)\b'
                     - name: variable.language.block.logic.mlog
                       match: '(?<=@)(?:message|switch|(?:micro|logic|hyper)-processor|memory-(?:cell|bank)|(?:large-)?logic-display)'
-                    # End of blocks
-                    
-                    - name: variable.language.item.mlog
-                      match: '(?<=@)(?:scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass)'
-                    - name: variable.language.liquid.mlog
-                      match: '(?<=@)(?:water|slag|oil|cryofluid)'
 
-                    - name: variable.language.special.mlog
-                      match: '(?<=@)(?:solid|air)'
-                    - name: variable.language.sensor.mlog
-                      match: |-
-                          (?x)
-                          (?<=@)(?:
-                              totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|
-                              powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|
-                              maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|
-                              team|type|flag|controlled|name|config|payloadCount|payloadType|
-                              progress|timescale|size|dead|range|boosting|controller
-                          )\b
-
-                    # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/GlobalConstants.java
-                    - name: variable.language.counts.mlog
-                      match: '(?<=@)(?:block|unit|item|liquid)Count'
-                    - name: variable.language.controlled.mlog
-                      match: '(?<=@)ctrl(?:Processor|Player|Formation)'
-                      
-                      # Deprecated
-                    - name: invalid.deprecated.mlog
-                      match: '(?<=@)commanded\b'
-                      comment: '@commanded was deprecated in favor of @controlled'
-
+            items:
+                name: variable.language.item.mlog
+                match: '(?<=@)(?:scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass)'
+            liquids:
+                name: variable.language.liquid.mlog
+                match: '(?<=@)(?:water|slag|oil|cryofluid)'
+            sensor:
+                name: variable.language.sensor.mlog
+                match: |-
+                    (?x)
+                    (?<=@)(?:
+                        totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|
+                        powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|
+                        maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|
+                        team|type|flag|controlled|name|config|payloadCount|payloadType|
+                        progress|timescale|size|dead|range|boosting|controller
+                    )\b
+            units:
+                name: variable.language.units.mlog
+                match: |-
+                    (?x)
+                    (?<=@)(?:
+                        alpha|beta|gamma|
+                        dagger|mace|crawler|atrax|spiroct|arkyid|toxopid|
+                        flare|horizon|zenith|antumbra|eclipse|fortress|
+                        mono|poly|mega|quad|oct|risso|
+                        minke|bryde|sei|omura|scepter|reign|
+                        nova|pulsar|quasar|vela|corvus
+                    )
     commands:
         # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/LStatements.java
         patterns:

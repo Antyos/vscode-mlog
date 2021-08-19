@@ -48,9 +48,40 @@
               "match": "(?<=@)(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter|tick)"
             },
             {
-              "name": "variable.language.units.mlog",
-              "match": "(?x)\n(?<=@)(?:\n    alpha|beta|gamma|\n    dagger|mace|crawler|atrax|spiroct|arkyid|toxopid|\n    flare|horizon|zenith|antumbra|eclipse|fortress|\n    mono|poly|mega|quad|oct|risso|\n    minke|bryde|sei|omura|scepter|reign|\n    nova|pulsar|quasar|vela|corvus\n)"
+              "include": "#blocks"
             },
+            {
+              "include": "#items"
+            },
+            {
+              "include": "#liquids"
+            },
+            {
+              "name": "variable.language.special.mlog",
+              "match": "(?<=@)(?:solid|air)"
+            },
+            {
+              "include": "#sensor"
+            },
+            {
+              "name": "variable.language.counts.mlog",
+              "match": "(?<=@)(?:block|unit|item|liquid)Count"
+            },
+            {
+              "name": "variable.language.controlled.mlog",
+              "match": "(?<=@)ctrl(?:Processor|Player|Formation)"
+            },
+            {
+              "name": "invalid.deprecated.mlog",
+              "match": "(?<=@)commanded\\b",
+              "comment": "@commanded was deprecated in favor of @controlled"
+            }
+          ]
+        }
+      },
+      "repository": {
+        "blocks": {
+          "patterns": [
             {
               "name": "variable.language.block.crafting.mlog",
               "match": "(?x)\n(?<=@)(?:\n    graphite-press|multi-press|silicon-smelter|silicon-crucible|kiln|\n    plastanium-compressor|phase-weaver|alloy-smelter|cryofluid-mixer|\n    pyratite-mixer|blast-mixer|melter|separator|disassembler|\n    spore-press|pulverizer|coal-centrifuge|incinerator\n)"
@@ -102,37 +133,24 @@
             {
               "name": "variable.language.block.logic.mlog",
               "match": "(?<=@)(?:message|switch|(?:micro|logic|hyper)-processor|memory-(?:cell|bank)|(?:large-)?logic-display)"
-            },
-            {
-              "name": "variable.language.item.mlog",
-              "match": "(?<=@)(?:scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass)"
-            },
-            {
-              "name": "variable.language.liquid.mlog",
-              "match": "(?<=@)(?:water|slag|oil|cryofluid)"
-            },
-            {
-              "name": "variable.language.special.mlog",
-              "match": "(?<=@)(?:solid|air)"
-            },
-            {
-              "name": "variable.language.sensor.mlog",
-              "match": "(?x)\n(?<=@)(?:\n    totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|\n    powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|\n    maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|\n    team|type|flag|controlled|name|config|payloadCount|payloadType|\n    progress|timescale|size|dead|range|boosting|controller\n)\\b"
-            },
-            {
-              "name": "variable.language.counts.mlog",
-              "match": "(?<=@)(?:block|unit|item|liquid)Count"
-            },
-            {
-              "name": "variable.language.controlled.mlog",
-              "match": "(?<=@)ctrl(?:Processor|Player|Formation)"
-            },
-            {
-              "name": "invalid.deprecated.mlog",
-              "match": "(?<=@)commanded\\b",
-              "comment": "@commanded was deprecated in favor of @controlled"
             }
           ]
+        },
+        "items": {
+          "name": "variable.language.item.mlog",
+          "match": "(?<=@)(?:scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass)"
+        },
+        "liquids": {
+          "name": "variable.language.liquid.mlog",
+          "match": "(?<=@)(?:water|slag|oil|cryofluid)"
+        },
+        "sensor": {
+          "name": "variable.language.sensor.mlog",
+          "match": "(?x)\n(?<=@)(?:\n    totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|\n    powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|\n    maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|\n    team|type|flag|controlled|name|config|payloadCount|payloadType|\n    progress|timescale|size|dead|range|boosting|controller\n)\\b"
+        },
+        "units": {
+          "name": "variable.language.units.mlog",
+          "match": "(?x)\n(?<=@)(?:\n    alpha|beta|gamma|\n    dagger|mace|crawler|atrax|spiroct|arkyid|toxopid|\n    flare|horizon|zenith|antumbra|eclipse|fortress|\n    mono|poly|mega|quad|oct|risso|\n    minke|bryde|sei|omura|scepter|reign|\n    nova|pulsar|quasar|vela|corvus\n)"
         }
       }
     },
