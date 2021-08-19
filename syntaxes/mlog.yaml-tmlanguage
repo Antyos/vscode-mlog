@@ -90,8 +90,13 @@ repository:
                 @(?:totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|
                     powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|
                     maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|
-                    team|type|flag|controlled|commanded|name|config|payloadCount|payloadType)
+                    team|type|flag|controlled|name|config|payloadCount|payloadType|
+                    progress|timescale|size|dead|range|boosting|controller)
                 \b
+          - name: invalid.deprecated.mlog
+            match: '@commanded\b'
+
+          # Catch other at-names
           - name: variable.language.generic_at_name.mlog
             match: '@[A-Za-z\-]+\b'
 
