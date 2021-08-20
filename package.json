@@ -53,7 +53,7 @@
         "update-grammar": "js-yaml syntaxes/mlog.YAML-tmLanguage > syntaxes/mlog.tmLanguage.json"
     },
     "devDependencies": {
-        "js-yaml": "^3.13.1"
+        "js-yaml": "^4.1.0"
     },
     "dependencies": {}
 }
