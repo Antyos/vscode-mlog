@@ -49,7 +49,7 @@
         ]
     },
     "scripts": {
-        "update-grammar": "js-yaml syntaxes/mlog.yaml-tmLanguage > syntaxes/mlog.tmLanguage.json"
+        "update-grammar": "js-yaml syntaxes/mlog.YAML-tmLanguage > syntaxes/mlog.tmLanguage.json"
     },
     "devDependencies": {
         "@types/node": "^9.4.6",
