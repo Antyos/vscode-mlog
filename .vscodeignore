@@ -16,7 +16,7 @@ tsconfig.json
 tslint.json
 
 # YAML grammar (only json is needed)
-syntaxes/mlog.yaml-tmlanguage
+syntaxes/mlog.YAML-tmLanguage
 
 # Test files
 test/**
