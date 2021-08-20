@@ -234,12 +234,18 @@
 @maxHealth
 @heat
 @efficiency
+@progress
+@timescale
 @rotation
 @x
 @y
 @shootX
 @shootY
+@size
+@dead
+@range
 @shooting
+@boosting
 @mineX
 @mineY
 @mining
@@ -247,17 +253,16 @@
 @type
 @flag
 @controlled
+@controller
+@commanded
 @name
-@config
 @payloadCount
 @payloadType
-@progress
-@timescale
-@size
-@dead
-@range
-@boosting
-@controller
+@enabled
+@shoot
+@shootp
+@config
+@color
 
 ## Counts
 @blockCount

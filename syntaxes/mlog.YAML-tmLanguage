@@ -112,15 +112,17 @@ repository:
         name: variable.language.liquid.mlog
         match: '(?<=@)(?:water|slag|oil|cryofluid)'
       sensor:
+        # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/LAccess.java
         name: variable.language.sensor.mlog
         match: |-
           (?x)
           (?<=@)(?:
-            totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|
-            powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|
-            maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|
-            team|type|flag|controlled|name|config|payloadCount|payloadType|
-            progress|timescale|size|dead|range|boosting|controller
+            totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|
+            powerCapacity|powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|
+            ammoCapacity|health|maxHealth|heat|efficiency|progress|timescale|rotation|
+            x|y|shootX|shootY|size|dead|range|shooting|boosting|mineX|mineY|mining|team|
+            type|flag|controlled|controller|commanded|name|payloadCount|payloadType|
+            enabled|shoot|shootp|config|color
           )\b
       units:
         name: variable.language.units.mlog
