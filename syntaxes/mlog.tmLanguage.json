@@ -34,7 +34,7 @@
   ],
   "repository": {
     "at_names": {
-      "comment": "Internal variables with pre-defined meaning, in the format of @var-name",
+      "comment": "Internal variables with pre-defined meaning, in the format of @var-name See https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/GlobalConstants.java",
       "name": "variable.language.at_name.mlog",
       "match": "(@)([A-Za-z][[:alnum:]_\\-]*)\\b",
       "captures": {
@@ -84,6 +84,7 @@
       },
       "repository": {
         "blocks": {
+          "comment": "List of all items that are defined in quotes except legacy and experimental\nitems. Items in the 'item' and 'item-large' are combined in a single check so\n'item' does not match in 'item-large' by mistake\nSee https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/content/Blocks.java",
           "patterns": [
             {
               "name": "variable.language.block.crafting.mlog",
@@ -95,11 +96,11 @@
             },
             {
               "name": "variable.language.block.distribution.mlog",
-              "match": "(?x)\n(?<=@)(?:\n    (?:(?:titanium|plastanium|armored|bridge|phase)-)?conveyor|junction|\n    (?:intverted-)?sorter|router|distributor|(?:over|under)flow-gate|mass-driver\n)"
+              "match": "(?x)\n(?<=@)(?:\n    (?:(?:titanium|plastanium|armored|bridge|phase)-)?conveyor|junction|\n    (?:intverted-)?sorter|router|distributor|(?:over|under)flow-gate|\n    mass-driver\n)"
             },
             {
               "name": "variable.language.block.liquid.mlog",
-              "match": "(?<=@)(?:(?:mechanical|rotary|thermal)-pump|(?:(?:pulse|plated|bridge|phase)-)?conduit|liquid-(?:router|tank|junction))\\b"
+              "match": "(?x)\n(?<=@)(?:\n  (?:mechanical|rotary|thermal)-pump|\n  (?:(?:pulse|plated|bridge|phase)-)?conduit|\n  liquid-(?:router|tank|junction)\n)"
             },
             {
               "name": "variable.language.block.power.mlog",
@@ -107,7 +108,7 @@
             },
             {
               "name": "variable.language.block.production.mlog",
-              "match": "(?<=@)(?:(?:mechanical|pneumatic|laser|blast)-drill|water-extractor|cultivator|oil-extractor)"
+              "match": "(?x)\n(?<=@)(?:\n  (?:mechanical|pneumatic|laser|blast)-drill|water-extractor|\n  cultivator|oil-extractor\n)"
             },
             {
               "name": "variable.language.block.storage.mlog",
@@ -115,11 +116,11 @@
             },
             {
               "name": "variable.language.block.turrets.mlog",
-              "match": "(?<=@)(?:duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown)"
+              "match": "(?x)\n(?<=@)(?:\n  duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|\n  segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown\n)"
             },
             {
               "name": "variable.language.block.units.mlog",
-              "match": "(?<=@)(?:command-center|(?:ground|air|naval)-factory|(?:additive|multiplicative|exponential|tetrative)-reconstructor|repair-point|resupply-point)"
+              "match": "(?x)\n(?<=@)(?:\n  command-center|(?:ground|air|naval)-factory|\n  (?:additive|multiplicative|exponential|tetrative)-reconstructor|\n  repair-point|resupply-point\n)"
             },
             {
               "name": "variable.language.block.payloads.mlog",
@@ -131,25 +132,26 @@
             },
             {
               "name": "variable.language.block.campaign.mlog",
-              "match": "(?<=@)(?:launch-pad|interplanetary-accelerator)\\b"
+              "match": "(?<=@)(?:launch-pad|interplanetary-accelerator)"
             },
             {
               "name": "variable.language.block.logic.mlog",
-              "match": "(?<=@)(?:message|switch|(?:micro|logic|hyper)-processor|memory-(?:cell|bank)|(?:large-)?logic-display)"
+              "match": "(?x)\n(?<=@)(?:\n  message|switch|(?:micro|logic|hyper)-processor|memory-(?:cell|bank)|\n  (?:large-)?logic-display\n)"
             }
           ]
         },
         "items": {
           "name": "variable.language.item.mlog",
-          "match": "(?<=@)(?:scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass)"
+          "match": "(?x)\n(?<=@)(?:\n  scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|\n  phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass\n)"
         },
         "liquids": {
           "name": "variable.language.liquid.mlog",
           "match": "(?<=@)(?:water|slag|oil|cryofluid)"
         },
         "sensor": {
+          "comment": "See https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/LAccess.java",
           "name": "variable.language.sensor.mlog",
-          "match": "(?x)\n(?<=@)(?:\n  totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|\n  powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|\n  maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|\n  team|type|flag|controlled|name|config|payloadCount|payloadType|\n  progress|timescale|size|dead|range|boosting|controller\n)\\b"
+          "match": "(?x)\n(?<=@)(?:\n  totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|\n  powerCapacity|powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|\n  ammoCapacity|health|maxHealth|heat|efficiency|progress|timescale|rotation|\n  x|y|shootX|shootY|size|dead|range|shooting|boosting|mineX|mineY|mining|team|\n  type|flag|controlled|controller|commanded|name|payloadCount|payloadType|\n  enabled|shoot|shootp|config|color\n)"
         },
         "units": {
           "name": "variable.language.units.mlog",
@@ -158,10 +160,11 @@
       }
     },
     "commands": {
+      "comment": "See https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/LStatements.java",
       "patterns": [
         {
           "name": "support.function.mlog",
-          "match": "\\b(read|write|draw|print|drawflush|printflush|getlink|control|radar|sensor|ubind|ucontrol|uradar|ulocate|wait|lookup)\\b"
+          "match": "(?x)\n\\b(\n  read|write|draw|print|drawflush|printflush|getlink|control|radar|sensor|\n  ubind|ucontrol|uradar|ulocate|wait|lookup\n)\\b"
         },
         {
           "name": "keyword.control.end.mlog",
@@ -219,6 +222,7 @@
       ]
     },
     "jump_conditions": {
+      "comment": "See https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/ConditionOp.java",
       "name": "constant.language.jump-condition.mlog",
       "match": "\\b(?:equal|notEqual|strictEqual|lessThan|lessThanEq|greaterThan|greaterThanEq|always)\\b"
     },
@@ -270,6 +274,7 @@
       ]
     },
     "operations": {
+      "comment": "See https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/LogicOp.java",
       "patterns": [
         {
           "name": "constant.language.operation.mlog",
