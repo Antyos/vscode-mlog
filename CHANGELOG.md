@@ -19,7 +19,7 @@ Update `mlog` syntax to be compatible with Mindustry v7. Closes #3.
 
 ### Fixed
 
-- Highlighting for: `@inverted-sorter`, `@power-node-large`, `@battery-large`, `@solar-panel-large`
+- Highlighting for: `@power-node-large`, `@battery-large`, `@solar-panel-large`
 
 ### Changed
 

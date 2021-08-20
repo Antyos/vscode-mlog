@@ -80,7 +80,7 @@
 @conveyor
 @junction
 @sorter
-@intverted-sorter
+@inverted-sorter
 @router
 @distributor
 @overflow-gate
@@ -103,7 +103,7 @@
 @power-node-large
 @surge-tower
 @diode
-@battery-large
+@battery
 @battery-large
 @combustion-generator
 @thermal-generator
