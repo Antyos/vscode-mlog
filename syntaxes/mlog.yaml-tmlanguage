@@ -14,226 +14,225 @@ patterns:
   - include: '#string'
 
 repository:
-    at_names:
-        comment: 'Internal variables with pre-defined meaning, in the format of @var-name'
-        name: variable.language.at_name.mlog
-        match: '(@)([A-Za-z][[:alnum:]_\-]*)\b'
-        captures:
-            '1': {name: punctuation.definition.at_sign.mlog}
-            '2':
-                patterns:
-                    # Needs quote around match pattern becuase js-yaml fails when first char is '@'
-                    - name: variable.language.builtin.mlog
-                      match: '(?<=@)(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter|tick)'
-                    - include: '#blocks'
-                    - include: '#items'
-                    - include: '#liquids'
-                    - name: variable.language.special.mlog
-                      match: '(?<=@)(?:solid|air)'
-                    - include: '#sensor'
-
-                    # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/GlobalConstants.java
-                    - name: variable.language.counts.mlog
-                      match: '(?<=@)(?:block|unit|item|liquid)Count'
-                    - name: variable.language.controlled.mlog
-                      match: '(?<=@)ctrl(?:Processor|Player|Formation)'
-                      
-                      # Deprecated
-                    - name: invalid.deprecated.mlog
-                      match: '(?<=@)commanded\b'
-                      comment: '@commanded was deprecated in favor of @controlled'
-
-        repository:
-            blocks:
-                patterns:
-                    # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/content/Blocks.java
-                    # List of all items that are defined in quotes except legacy and experimental items
-                    # Items in the 'item' and 'item-large' are combined in a single check so 'item' does not match 'item-large' by mistake
-                    - name: variable.language.block.crafting.mlog
-                      match: |-
-                          (?x)
-                          (?<=@)(?:
-                              graphite-press|multi-press|silicon-smelter|silicon-crucible|kiln|
-                              plastanium-compressor|phase-weaver|alloy-smelter|cryofluid-mixer|
-                              pyratite-mixer|blast-mixer|melter|separator|disassembler|
-                              spore-press|pulverizer|coal-centrifuge|incinerator
-                          )
-                    - name: variable.language.block.defense.mlog
-                      match: |-
-                          (?x)
-                          (?<=@)(?:
-                              copper-wall(?:-large)?|titanium-wall(?:-large)?|
-                              plastanium-wall(?:-large)?|thorium-wall(?:-large)?|
-                              phase-wall(?:-large)?|surge-wall(?:-large)?|door(?:-large)?|
-                              scrap-wall(?:-(?:large|huge|gigantic))?|thruster|mender|
-                              mend-projector|overdrive-projector|overdrive-dome|force-projector|
-                              shock-mine
-                          )
-                    - name: variable.language.block.distribution.mlog
-                      match: |-
-                          (?x)
-                          (?<=@)(?:
-                              (?:(?:titanium|plastanium|armored|bridge|phase)-)?conveyor|junction|
-                              (?:intverted-)?sorter|router|distributor|(?:over|under)flow-gate|mass-driver
-                          )
-                          
-                    - name: variable.language.block.liquid.mlog
-                      match: '(?<=@)(?:(?:mechanical|rotary|thermal)-pump|(?:(?:pulse|plated|bridge|phase)-)?conduit|liquid-(?:router|tank|junction))\b'
-                    - name: variable.language.block.power.mlog
-                      match: |-
-                          (?x)
-                          (?<=@)(?:
-                              power-node(?:-large)?|surge-tower|diode|battery(?:-large)?|
-                              (?:combustion|thermal|steam|differential|rtg)-generator|
-                              solar-panel(?:-large)?|(?:thorium|impact)-reactor
-                          )
-                          
-                    - name: variable.language.block.production.mlog
-                      match: (?<=@)(?:(?:mechanical|pneumatic|laser|blast)-drill|water-extractor|cultivator|oil-extractor)
-                    - name: variable.language.block.storage.mlog
-                      match: '(?<=@)(?:core-(?:shard|foundation|nucleus)|vault|container|unloader)'
-                    - name: variable.language.block.turrets.mlog
-                      match: '(?<=@)(?:duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown)'
-                    - name: variable.language.block.units.mlog
-                      match: '(?<=@)(?:command-center|(?:ground|air|naval)-factory|(?:additive|multiplicative|exponential|tetrative)-reconstructor|repair-point|resupply-point)'
-                    - name: variable.language.block.payloads.mlog
-                      match: '(?<=@)(?:payload-(?:conveyor|router|propulsion-tower))'
-                    - name: variable.language.block.sandbox.mlog
-                      match: '(?<=@)(?:(?:power|item|liquid|payload)-(?:source|void)|illuminator)'
-                    - name: variable.language.block.campaign.mlog
-                      match: '(?<=@)(?:launch-pad|interplanetary-accelerator)\b'
-                    - name: variable.language.block.logic.mlog
-                      match: '(?<=@)(?:message|switch|(?:micro|logic|hyper)-processor|memory-(?:cell|bank)|(?:large-)?logic-display)'
-
-            items:
-                name: variable.language.item.mlog
-                match: '(?<=@)(?:scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass)'
-            liquids:
-                name: variable.language.liquid.mlog
-                match: '(?<=@)(?:water|slag|oil|cryofluid)'
-            sensor:
-                name: variable.language.sensor.mlog
-                match: |-
-                    (?x)
-                    (?<=@)(?:
-                        totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|
-                        powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|
-                        maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|
-                        team|type|flag|controlled|name|config|payloadCount|payloadType|
-                        progress|timescale|size|dead|range|boosting|controller
-                    )\b
-            units:
-                name: variable.language.units.mlog
-                match: |-
-                    (?x)
-                    (?<=@)(?:
-                        alpha|beta|gamma|
-                        dagger|mace|crawler|atrax|spiroct|arkyid|toxopid|
-                        flare|horizon|zenith|antumbra|eclipse|fortress|
-                        mono|poly|mega|quad|oct|risso|
-                        minke|bryde|sei|omura|scepter|reign|
-                        nova|pulsar|quasar|vela|corvus
-                    )
-    commands:
-        # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/LStatements.java
+  at_names:
+    comment: 'Internal variables with pre-defined meaning, in the format of @var-name'
+    name: variable.language.at_name.mlog
+    match: '(@)([A-Za-z][[:alnum:]_\-]*)\b'
+    captures:
+      '1': { name: punctuation.definition.at_sign.mlog }
+      '2':
         patterns:
-          - name: support.function.mlog
-            match: \b(read|write|draw|print|drawflush|printflush|getlink|control|radar|sensor|ubind|ucontrol|uradar|ulocate|wait|lookup)\b
-          - name: keyword.control.end.mlog
-            match: \bend\b
-          - name: keyword.control.jump.mlog
-            match: \bjump\b
-          - name: keyword.control.set.mlog
-            match: \bset\b
-          - name: keyword.control.op.mlog
-            match: \bop\b
-          - name: keyword.control.noop.mlog
-            match: \bnoop\b
+          # Needs quote around match pattern becuase js-yaml fails when first char is '@'
+          - name: variable.language.builtin.mlog
+            match: '(?<=@)(?:links|time|unit|ipt|this|thisx|thisy|mapw|maph|counter|tick)'
+          - include: '#blocks'
+          - include: '#items'
+          - include: '#liquids'
+          - name: variable.language.special.mlog
+            match: '(?<=@)(?:solid|air)'
+          - include: '#sensor'
 
-    comments:
-        name: comment.line.number-sign.mlog
-        match: (#+).*$
-        captures:
-            '1': {name: punctuation.definition.comment.mlog}
+          # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/GlobalConstants.java
+          - name: variable.language.counts.mlog
+            match: '(?<=@)(?:block|unit|item|liquid)Count'
+          - name: variable.language.controlled.mlog
+            match: '(?<=@)ctrl(?:Processor|Player|Formation)'
 
-    global_constants:
+          # Deprecated
+          - name: invalid.deprecated.mlog
+            match: '(?<=@)commanded\b'
+            comment: '@commanded was deprecated in favor of @controlled'
+
+    repository:
+      blocks:
         patterns:
-          - include: '#at_names'
-            # Default constants
-          - name: constant.language.boolean.true.mlog
-            match: '\btrue\b'
-          - name: constant.language.boolean.false.mlog
-            match: '\bfalse\b'
-          - name: constant.language.null.mlog
-            match: '\bnull\b'
-          - name: constant.language.the-end.mlog
-            match: '\bthe end\b'
-            comment: |-
-                I'm not really sure why this is here, but it's listed here:
-                https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/GlobalConstants.java#L28
-
-    jump_conditions:
-        # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/ConditionOp.java
-        name: constant.language.jump-condition.mlog
-        match: \b(?:equal|notEqual|strictEqual|lessThan|lessThanEq|greaterThan|greaterThanEq|always)\b
-      
-    jump_labels:
-        name: entity.name.function.mlog
-        match: \b([[:alnum:]_]+)(:)(?=\s|$)
-        captures:
-            '1': {name: entity.name.function.mlog}
-            '2': {name: punctuation.separator.colon.mlog}
-
-    numbers:
-        patterns:
-            # Minus sign
-          - name: keyword.operator.arithmetic.mlog
-            match: '-'
-
-            # Numbers (incorporated from PythonImproved grammar)
-          - name: constant.numeric.integer.hexadecimal.python
-            match: \b(?i:(0x\h+))
-
-          - name: constant.numeric.integer.binary.python
-            match: \b(?i:(0b[01]+))
-            
-          - comment: Ummm... why do we have three of these? This is one...
-            name: constant.numeric.float.mlog
-            match: \b(?i:(\d+\.\d*(e[\-\+]?\d+)?))(?=[^[:alpha:]_])
-
-          - comment: This is two...
-            name: constant.numeric.float.mlog
-            match: (?<=[^[:alnum:]_])(?i:(\.\d+(e[\-\+]?\d+)?))
-
-          - comment: And this is three...
-            name: constant.numeric.float.mlog
-            match: \b(?i:(\d+e[\-\+]?\d+))
-
-          - name: constant.numeric.integer.decimal.mlog
-            match: \b([1-9]+[0-9]*|0)
-    
-    operations:
-        # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/LogicOp.java
-        patterns:
-          - name: constant.language.operation.mlog
+          # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/content/Blocks.java
+          # List of all items that are defined in quotes except legacy and experimental items
+          # Items in the 'item' and 'item-large' are combined in a single check so 'item' does not match 'item-large' by mistake
+          - name: variable.language.block.crafting.mlog
             match: |-
-                (?x)
-                \b(?:
-                    add|sub|mul|div|idiv|mod|pow|equal|notEqual|strictEqual|land|lessThan|
-                    lessThanEq|greaterThan|greaterThanEq|shl|shr|or|and|xor|not|max|min|
-                    angle|len|noise|abs|log|log10|sin|cos|tan|asin|acos|atan|floor|ceil|
-                    sqrt|rand
-                )\b
-            comment: Does not include comparisons covered by #jump_conditions
-          - name: invalid.deprecated.operation.mlog
-            match: \b(?:atan2|dst)\b
-            comment: '`atan2` and `dst` were removed in favor of `angle` and `len`, respectively'
+              (?x)
+              (?<=@)(?:
+                graphite-press|multi-press|silicon-smelter|silicon-crucible|kiln|
+                plastanium-compressor|phase-weaver|alloy-smelter|cryofluid-mixer|
+                pyratite-mixer|blast-mixer|melter|separator|disassembler|
+                spore-press|pulverizer|coal-centrifuge|incinerator
+              )
+          - name: variable.language.block.defense.mlog
+            match: |-
+              (?x)
+              (?<=@)(?:
+                copper-wall(?:-large)?|titanium-wall(?:-large)?|
+                plastanium-wall(?:-large)?|thorium-wall(?:-large)?|
+                phase-wall(?:-large)?|surge-wall(?:-large)?|door(?:-large)?|
+                scrap-wall(?:-(?:large|huge|gigantic))?|thruster|mender|
+                mend-projector|overdrive-projector|overdrive-dome|force-projector|
+                shock-mine
+              )
+          - name: variable.language.block.distribution.mlog
+            match: |-
+              (?x)
+              (?<=@)(?:
+                  (?:(?:titanium|plastanium|armored|bridge|phase)-)?conveyor|junction|
+                  (?:intverted-)?sorter|router|distributor|(?:over|under)flow-gate|mass-driver
+              )
 
-    string:
-        name: string.quoted.double.mlog
-        begin: '"'
-        beginCaptures:
-            '0': {name: punctuation.definition.string.begin.mlog}
-        end: '"'
-        endCaptures:
-            '0': {name: punctuation.definition.string.end.mlog}
+          - name: variable.language.block.liquid.mlog
+            match: '(?<=@)(?:(?:mechanical|rotary|thermal)-pump|(?:(?:pulse|plated|bridge|phase)-)?conduit|liquid-(?:router|tank|junction))\b'
+          - name: variable.language.block.power.mlog
+            match: |-
+              (?x)
+              (?<=@)(?:
+                power-node(?:-large)?|surge-tower|diode|battery(?:-large)?|
+                (?:combustion|thermal|steam|differential|rtg)-generator|
+                solar-panel(?:-large)?|(?:thorium|impact)-reactor
+              )
+
+          - name: variable.language.block.production.mlog
+            match: (?<=@)(?:(?:mechanical|pneumatic|laser|blast)-drill|water-extractor|cultivator|oil-extractor)
+          - name: variable.language.block.storage.mlog
+            match: '(?<=@)(?:core-(?:shard|foundation|nucleus)|vault|container|unloader)'
+          - name: variable.language.block.turrets.mlog
+            match: '(?<=@)(?:duo|scatter|scorch|hail|wave|lancer|arc|parallax|swarmer|salvo|segment|tsunami|fuse|ripple|cyclone|foreshadow|spectre|meltdown)'
+          - name: variable.language.block.units.mlog
+            match: '(?<=@)(?:command-center|(?:ground|air|naval)-factory|(?:additive|multiplicative|exponential|tetrative)-reconstructor|repair-point|resupply-point)'
+          - name: variable.language.block.payloads.mlog
+            match: '(?<=@)(?:payload-(?:conveyor|router|propulsion-tower))'
+          - name: variable.language.block.sandbox.mlog
+            match: '(?<=@)(?:(?:power|item|liquid|payload)-(?:source|void)|illuminator)'
+          - name: variable.language.block.campaign.mlog
+            match: '(?<=@)(?:launch-pad|interplanetary-accelerator)\b'
+          - name: variable.language.block.logic.mlog
+            match: '(?<=@)(?:message|switch|(?:micro|logic|hyper)-processor|memory-(?:cell|bank)|(?:large-)?logic-display)'
+      items:
+        name: variable.language.item.mlog
+        match: '(?<=@)(?:scrap|copper|lead|graphite|coal|titanium|thorium|silicon|plastanium|phase-fabric|surge-alloy|spore-pod|sand|blast-compound|pyratite|metaglass)'
+      liquids:
+        name: variable.language.liquid.mlog
+        match: '(?<=@)(?:water|slag|oil|cryofluid)'
+      sensor:
+        name: variable.language.sensor.mlog
+        match: |-
+          (?x)
+          (?<=@)(?:
+            totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|
+            powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|
+            maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|
+            team|type|flag|controlled|name|config|payloadCount|payloadType|
+            progress|timescale|size|dead|range|boosting|controller
+          )\b
+      units:
+        name: variable.language.units.mlog
+        match: |-
+          (?x)
+          (?<=@)(?:
+            alpha|beta|gamma|
+            dagger|mace|crawler|atrax|spiroct|arkyid|toxopid|
+            flare|horizon|zenith|antumbra|eclipse|fortress|
+            mono|poly|mega|quad|oct|risso|
+            minke|bryde|sei|omura|scepter|reign|
+            nova|pulsar|quasar|vela|corvus
+          )
+  commands:
+    # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/LStatements.java
+    patterns:
+      - name: support.function.mlog
+        match: \b(read|write|draw|print|drawflush|printflush|getlink|control|radar|sensor|ubind|ucontrol|uradar|ulocate|wait|lookup)\b
+      - name: keyword.control.end.mlog
+        match: \bend\b
+      - name: keyword.control.jump.mlog
+        match: \bjump\b
+      - name: keyword.control.set.mlog
+        match: \bset\b
+      - name: keyword.control.op.mlog
+        match: \bop\b
+      - name: keyword.control.noop.mlog
+        match: \bnoop\b
+
+  comments:
+    name: comment.line.number-sign.mlog
+    match: (#+).*$
+    captures:
+      '1': { name: punctuation.definition.comment.mlog }
+
+  global_constants:
+    patterns:
+      - include: '#at_names'
+        # Default constants
+      - name: constant.language.boolean.true.mlog
+        match: '\btrue\b'
+      - name: constant.language.boolean.false.mlog
+        match: '\bfalse\b'
+      - name: constant.language.null.mlog
+        match: '\bnull\b'
+      - name: constant.language.the-end.mlog
+        match: '\bthe end\b'
+        comment: |-
+          I'm not really sure why this is here, but it's listed here:
+          https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/GlobalConstants.java#L28
+
+  jump_conditions:
+    # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/ConditionOp.java
+    name: constant.language.jump-condition.mlog
+    match: \b(?:equal|notEqual|strictEqual|lessThan|lessThanEq|greaterThan|greaterThanEq|always)\b
+
+  jump_labels:
+    name: entity.name.function.mlog
+    match: \b([[:alnum:]_]+)(:)(?=\s|$)
+    captures:
+      '1': { name: entity.name.function.mlog }
+      '2': { name: punctuation.separator.colon.mlog }
+
+  numbers:
+    patterns:
+      # Minus sign
+      - name: keyword.operator.arithmetic.mlog
+        match: '-'
+
+      # Numbers (incorporated from PythonImproved grammar)
+      - name: constant.numeric.integer.hexadecimal.python
+        match: \b(?i:(0x\h+))
+
+      - name: constant.numeric.integer.binary.python
+        match: \b(?i:(0b[01]+))
+
+      - comment: Ummm... why do we have three of these? This is one...
+        name: constant.numeric.float.mlog
+        match: \b(?i:(\d+\.\d*(e[\-\+]?\d+)?))(?=[^[:alpha:]_])
+
+      - comment: This is two...
+        name: constant.numeric.float.mlog
+        match: (?<=[^[:alnum:]_])(?i:(\.\d+(e[\-\+]?\d+)?))
+
+      - comment: And this is three...
+        name: constant.numeric.float.mlog
+        match: \b(?i:(\d+e[\-\+]?\d+))
+
+      - name: constant.numeric.integer.decimal.mlog
+        match: \b([1-9]+[0-9]*|0)
+
+  operations:
+    # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/LogicOp.java
+    patterns:
+      - name: constant.language.operation.mlog
+        match: |-
+          (?x)
+          \b(?:
+            add|sub|mul|div|idiv|mod|pow|equal|notEqual|strictEqual|land|lessThan|
+            lessThanEq|greaterThan|greaterThanEq|shl|shr|or|and|xor|not|max|min|
+            angle|len|noise|abs|log|log10|sin|cos|tan|asin|acos|atan|floor|ceil|
+            sqrt|rand
+          )\b
+        comment: Does not include comparisons covered by #jump_conditions
+      - name: invalid.deprecated.operation.mlog
+        match: \b(?:atan2|dst)\b
+        comment: '`atan2` and `dst` were removed in favor of `angle` and `len`, respectively'
+
+  string:
+    name: string.quoted.double.mlog
+    begin: '"'
+    beginCaptures:
+      '0': { name: punctuation.definition.string.begin.mlog }
+    end: '"'
+    endCaptures:
+      '0': { name: punctuation.definition.string.end.mlog }
