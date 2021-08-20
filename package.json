@@ -49,6 +49,7 @@
         ]
     },
     "scripts": {
+        "vscode:prepublish": "npm run update-grammar",
         "update-grammar": "js-yaml syntaxes/mlog.YAML-tmLanguage > syntaxes/mlog.tmLanguage.json"
     },
     "devDependencies": {
