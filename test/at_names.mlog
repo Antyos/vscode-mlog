@@ -1,6 +1,13 @@
 # Generic rules
 
+## Valid
+@foo
+@foo-bar
+@foo-bar@baz
 
+## Semi-Invalid
+@foo-
+@foo%bar
 
 # Mindustry
 
