@@ -31,6 +31,7 @@ repository:
           - name: variable.language.special.mlog
             match: '(?<=@)(?:solid|air)'
           - include: '#sensor'
+          - include: '#units'
 
           # See: https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/logic/GlobalConstants.java
           - name: variable.language.counts.mlog

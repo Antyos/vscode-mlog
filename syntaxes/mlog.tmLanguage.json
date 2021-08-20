@@ -64,6 +64,9 @@
               "include": "#sensor"
             },
             {
+              "include": "#units"
+            },
+            {
               "name": "variable.language.counts.mlog",
               "match": "(?<=@)(?:block|unit|item|liquid)Count"
             },
@@ -84,11 +87,11 @@
           "patterns": [
             {
               "name": "variable.language.block.crafting.mlog",
-              "match": "(?x)\n(?<=@)(?:\n    graphite-press|multi-press|silicon-smelter|silicon-crucible|kiln|\n    plastanium-compressor|phase-weaver|alloy-smelter|cryofluid-mixer|\n    pyratite-mixer|blast-mixer|melter|separator|disassembler|\n    spore-press|pulverizer|coal-centrifuge|incinerator\n)"
+              "match": "(?x)\n(?<=@)(?:\n  graphite-press|multi-press|silicon-smelter|silicon-crucible|kiln|\n  plastanium-compressor|phase-weaver|alloy-smelter|cryofluid-mixer|\n  pyratite-mixer|blast-mixer|melter|separator|disassembler|\n  spore-press|pulverizer|coal-centrifuge|incinerator\n)"
             },
             {
               "name": "variable.language.block.defense.mlog",
-              "match": "(?x)\n(?<=@)(?:\n    copper-wall(?:-large)?|titanium-wall(?:-large)?|\n    plastanium-wall(?:-large)?|thorium-wall(?:-large)?|\n    phase-wall(?:-large)?|surge-wall(?:-large)?|door(?:-large)?|\n    scrap-wall(?:-(?:large|huge|gigantic))?|thruster|mender|\n    mend-projector|overdrive-projector|overdrive-dome|force-projector|\n    shock-mine\n)"
+              "match": "(?x)\n(?<=@)(?:\n  copper-wall(?:-large)?|titanium-wall(?:-large)?|\n  plastanium-wall(?:-large)?|thorium-wall(?:-large)?|\n  phase-wall(?:-large)?|surge-wall(?:-large)?|door(?:-large)?|\n  scrap-wall(?:-(?:large|huge|gigantic))?|thruster|mender|\n  mend-projector|overdrive-projector|overdrive-dome|force-projector|\n  shock-mine\n)"
             },
             {
               "name": "variable.language.block.distribution.mlog",
@@ -100,7 +103,7 @@
             },
             {
               "name": "variable.language.block.power.mlog",
-              "match": "(?x)\n(?<=@)(?:\n    power-node(?:-large)?|surge-tower|diode|battery(?:-large)?|\n    (?:combustion|thermal|steam|differential|rtg)-generator|\n    solar-panel(?:-large)?|(?:thorium|impact)-reactor\n)"
+              "match": "(?x)\n(?<=@)(?:\n  power-node(?:-large)?|surge-tower|diode|battery(?:-large)?|\n  (?:combustion|thermal|steam|differential|rtg)-generator|\n  solar-panel(?:-large)?|(?:thorium|impact)-reactor\n)"
             },
             {
               "name": "variable.language.block.production.mlog",
@@ -146,11 +149,11 @@
         },
         "sensor": {
           "name": "variable.language.sensor.mlog",
-          "match": "(?x)\n(?<=@)(?:\n    totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|\n    powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|\n    maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|\n    team|type|flag|controlled|name|config|payloadCount|payloadType|\n    progress|timescale|size|dead|range|boosting|controller\n)\\b"
+          "match": "(?x)\n(?<=@)(?:\n  totalItems|firstItem|totalLiquids|totalPower|itemCapacity|liquidCapacity|powerCapacity|\n  powerNetStored|powerNetCapacity|powerNetIn|powerNetOut|ammo|ammoCapacity|health|\n  maxHealth|heat|efficiency|rotation|x|y|shootX|shootY|shooting|mineX|mineY|mining|\n  team|type|flag|controlled|name|config|payloadCount|payloadType|\n  progress|timescale|size|dead|range|boosting|controller\n)\\b"
         },
         "units": {
           "name": "variable.language.units.mlog",
-          "match": "(?x)\n(?<=@)(?:\n    alpha|beta|gamma|\n    dagger|mace|crawler|atrax|spiroct|arkyid|toxopid|\n    flare|horizon|zenith|antumbra|eclipse|fortress|\n    mono|poly|mega|quad|oct|risso|\n    minke|bryde|sei|omura|scepter|reign|\n    nova|pulsar|quasar|vela|corvus\n)"
+          "match": "(?x)\n(?<=@)(?:\n  alpha|beta|gamma|\n  dagger|mace|crawler|atrax|spiroct|arkyid|toxopid|\n  flare|horizon|zenith|antumbra|eclipse|fortress|\n  mono|poly|mega|quad|oct|risso|\n  minke|bryde|sei|omura|scepter|reign|\n  nova|pulsar|quasar|vela|corvus\n)"
         }
       }
     },
@@ -270,7 +273,7 @@
       "patterns": [
         {
           "name": "constant.language.operation.mlog",
-          "match": "(?x)\n\\b(?:\n    add|sub|mul|div|idiv|mod|pow|equal|notEqual|strictEqual|land|lessThan|\n    lessThanEq|greaterThan|greaterThanEq|shl|shr|or|and|xor|not|max|min|\n    angle|len|noise|abs|log|log10|sin|cos|tan|asin|acos|atan|floor|ceil|\n    sqrt|rand\n)\\b",
+          "match": "(?x)\n\\b(?:\n  add|sub|mul|div|idiv|mod|pow|equal|notEqual|strictEqual|land|lessThan|\n  lessThanEq|greaterThan|greaterThanEq|shl|shr|or|and|xor|not|max|min|\n  angle|len|noise|abs|log|log10|sin|cos|tan|asin|acos|atan|floor|ceil|\n  sqrt|rand\n)\\b",
           "comment": "Does not include comparisons covered by"
         },
         {
