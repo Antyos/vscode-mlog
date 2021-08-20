@@ -7,6 +7,7 @@ op mod result a b
 op pow result a b
 op equal result a b
 op notEqual result a b
+op strictEqual result a b
 op land result a b  # Logical and
 op lessThan result a b
 op lessThanEq result a b
@@ -20,8 +21,8 @@ op xor result a b # bitwise XOR
 op not result a 0 # Single arg; Bitwise NOT
 op max result a b
 op min result a b
-op atan2 result a b
-op dst result a b
+op angle result a b
+op len result a b
 op noise result a b
 op abs result a 0   # Single arg
 op log result a 0   # Single arg
@@ -33,3 +34,7 @@ op floor result a 0 # Single arg
 op ceil result a 0  # Single arg
 op sqrt result a 0  # Single arg
 op rand result a 0  # Single arg
+
+# Deprecated
+op atan2 result a b
+op dst result a b
