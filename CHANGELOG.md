@@ -1,5 +1,35 @@
 # Changelog
 
+## [0.1.0] - (2021-08-20)
+
+Update `mlog` syntax to be compatible with Mindustry v7. Closes #3.
+
+### Added
+
+- Jump labels syntax
+- Operators: `strictEqual`, `asin`, `acos`, and `atan`
+- Commands: `wait` and `lookup`
+- At-names:
+    - Built-in: `@tick`
+    - Counts: `@blockCount`, `@unitCount`, `@itemCount`, `@liquidCount`
+    - Controlled: `@ctrlProcessor`, `@ctrlPlayer`, `@ctrlFormation`
+    - Sensable: `@progress`, `@timescale`, `@size`, `@dead`, `@range`, `@boosting`, `@controller`
+    - Other: `@payload-propulsion-tower`, `@payload-source`, `@payload-void`
+- Unrecognized at-names will also be highlighted
+
+### Fixed
+
+- Highlighting for: `@power-node-large`, `@battery-large`, `@solar-panel-large`
+
+### Changed
+
+- Operators: `atan2` and `dst` with `angle` and `len`, respectively
+
+### Deprecated
+
+- At-names: `@commanded`
+- Operators: `atan2` and `dst`. While not officially deprecated in-game, it is unclear if they will continue to be supported and the game seems to be favoring the new `angle` and `len`, respectively.
+
 ## [0.0.2] - (2020-12-25)
 
 ### Added

@@ -2,7 +2,7 @@
     "name": "vscode-mlog",
     "displayName": "Mindustry Logic",
     "description": "Mindustry Logic (mlog) highlighting for VSCode!",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "publisher": "Antyos",
     "icon": "images/logo.png",
     "license": "SEE LICENSE IN LICENSE",
@@ -49,15 +49,11 @@
         ]
     },
     "scripts": {
-        "update-grammar": "js-yaml syntaxes/mlog.yaml-tmLanguage > syntaxes/mlog.tmLanguage.json"
+        "vscode:prepublish": "npm run update-grammar",
+        "update-grammar": "js-yaml syntaxes/mlog.YAML-tmLanguage > syntaxes/mlog.tmLanguage.json"
     },
     "devDependencies": {
-        "@types/node": "^9.4.6",
-        "@types/vscode": "^1.44.0",
-        "js-yaml": "^3.13.1",
-        "tslint": "^5.16.0",
-        "typescript": "^3.5.1",
-        "vsce": "^1.75.0"
+        "js-yaml": "^4.1.0"
     },
     "dependencies": {}
 }

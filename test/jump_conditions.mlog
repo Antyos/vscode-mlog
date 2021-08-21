@@ -1,5 +1,6 @@
 jump -1 equal x 100
 jump -1 notEqual x 100
+jump -1 strictEqual x 100
 jump -1 lessThan x 100
 jump -1 lessThanEq x 100
 jump -1 greaterThan x 100

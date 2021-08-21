@@ -16,4 +16,6 @@ ubind @poly
 ucontrol move 0 0 0 0 0
 uradar enemy any any distance turret1 1 result
 ulocate building core true @copper outx outy found building
+wait 0.5
+lookup block result 0
 # This is a comment
