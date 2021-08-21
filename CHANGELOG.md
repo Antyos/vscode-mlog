@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [0.1.0] - (2021-08-20)
 
 Update `mlog` syntax to be compatible with Mindustry v7. Closes #3.
 

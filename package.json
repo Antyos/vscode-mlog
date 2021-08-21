@@ -2,7 +2,7 @@
     "name": "vscode-mlog",
     "displayName": "Mindustry Logic",
     "description": "Mindustry Logic (mlog) highlighting for VSCode!",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "publisher": "Antyos",
     "icon": "images/logo.png",
     "license": "SEE LICENSE IN LICENSE",
